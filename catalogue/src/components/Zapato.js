@@ -90,7 +90,7 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-6 my-2">
+            <div className="col-xl-3 col-sm-6 col-12 my-2">
                 <Card>
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}
