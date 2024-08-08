@@ -5,6 +5,7 @@ import Zapato from './components/Zapato';
 import references from './assets/references/references.json';
 import { useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
+import Image from 'react-bootstrap/esm/Image';
 
 function App() {
   const zapatos = references["zapatos"];
@@ -68,8 +69,14 @@ function App() {
     <div className="container">
       <nav className="navbar">
         <div className="container-fluid">
-          <div className="navbar-brand"><h1 className='text-secondary'>Catálogo Palma Store</h1></div>
-          <button className="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <div className="navbar-brand d-flex align-items-center justify-content-center w-100 p-0 m-0" style={{ 'max-height': '126px' }}>
+            <Image
+              src={require(`./assets/images/logo.jpg`)}
+              fluid
+            ></Image>
+            </div>
+            <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'><h1>Catálogo</h1></div>
+          <button className="navbar-toggler d-md-none mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">

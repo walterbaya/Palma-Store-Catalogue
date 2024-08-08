@@ -40,7 +40,7 @@ class Zapato extends React.Component {
         const listItems = this.state.talles.map(talle =>
             <li key={talle} className="list-group-item border-0 w-100">{talle}</li>
         );
-        return <ul id="talles" className="list-group list-group-flush d-flex flex-row justify-content-center text-center">{listItems}</ul>;
+        return <ul id="talles" className="list-group list-group-flush d-flex flex-row justify-content-center text-center m-0 p-0">{listItems}</ul>;
     }
 
     capitalizeFirstLetter(str) {
@@ -67,7 +67,7 @@ class Zapato extends React.Component {
                 fluid
             />
         );
-        return <div id="colores" className="d-flex flex-row justify-content-center text-center my-2">{listItems}</div>;
+        return <div id="colores" className="d-flex flex-row justify-content-center text-center">{listItems}</div>;
     }
 
     render_carousel_items() {
@@ -90,7 +90,7 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-sm-6 col-12 my-2">
+            <div className="col-xl-4 col-md-6 col-12 my-1">
                 <Card>
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}
