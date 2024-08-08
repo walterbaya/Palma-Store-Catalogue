@@ -14,6 +14,7 @@ class Zapato extends React.Component {
             talles: props.talles || [],
             colores: props.colores || [],
             color_actual: "estandar",
+            nombre_color_estandar: props.nombre_color_estandar || "",
             urls_imagenes: this.getImageUrls(props.nombre, "estandar")
         };
     }
@@ -78,23 +79,34 @@ class Zapato extends React.Component {
         return listItems;
     }
 
+    render_text_color(){
+        if(this.state.color_actual === "estandar"){
+            return this.capitalizeFirstLetter(this.state.nombre_color_estandar)     
+        }
+        else{
+            return this.capitalizeFirstLetter(this.state.color_actual);
+        }
+    }
+
     render() {
         return (
-            <div className="col-xl-3 col-md-4 col-6 my-2">
+            <div className="col-xl-3 col-6 my-2">
                 <Card>
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}
                     </Carousel>
 
-                    <Card.Body>
-                        <Card.Title>{this.capitalizeFirstLetter(this.state.nombre)}</Card.Title>
-                        <Card.Text>{this.state.descripcion}</Card.Text>
-                    </Card.Body>
-
                     {/* Colores */}
                     <Card.Body className="text-center">
                         {this.render_colores()}
                     </Card.Body>
+
+                    <Card.Body>
+                        <Card.Title>{this.capitalizeFirstLetter(this.state.nombre)}</Card.Title>
+                        <Card.Text className="text-secondary">Color:  {this.render_text_color()}</Card.Text>
+                        <Card.Text>{this.state.descripcion}</Card.Text>
+                    </Card.Body>
+
 
                     {/* Género */}
                     <Card.Body className="text-center border-top">

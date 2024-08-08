@@ -1,8 +1,8 @@
 {
     "zapatos": [
-        {"nombre": "zapato1", "genero": "Hombre", "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content.","talles": [39, 40, 41], "colores": ["estandar", "blanco"]},
-        {"nombre": "zapato1 copy", "genero": "Mujer",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [39, 40, 41], "colores": ["estandar", "blanco"]},
-        {"nombre": "zapato1 copy 2","genero": "Hombre",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [35, 36, 41], "colores": ["estandar", "blanco"]},
-        {"nombre": "zapato1 copy 3","genero": "Mujer",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [39, 40, 41], "colores": ["estandar", "blanco"]}
+        {"nombre": "zapato1", "genero": "Hombre", "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content.","talles": [39, 40, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "bufalino"},
+        {"nombre": "zapato1 copy", "genero": "Mujer",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [39, 40, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "suela"},
+        {"nombre": "zapato1 copy 2","genero": "Hombre",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [35, 36, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "arizona"},
+        {"nombre": "zapato1 copy 3","genero": "Mujer",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [39, 40, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "bufalino"}
     ]
 }
