@@ -4,8 +4,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Zapato from './components/Zapato';
 import references from './assets/references/references.json';
 import { useState } from 'react';
-import Badge from 'react-bootstrap/Badge';
 import Image from 'react-bootstrap/esm/Image';
+import Badge from 'react-bootstrap/Badge';
 
 function App() {
   const zapatos = references["zapatos"];
@@ -41,8 +41,11 @@ function App() {
 
   let filteredZapatos = zapatos.filter(zapato =>
     (selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender) &&
-    (selectedTalle.size === 0 || zapato.talles.some(talle => selectedTalle.has(talle)))
+    (selectedTalle.length === 0 ||
+      (Math.max(...zapato.talles) <= Math.max(...selectedTalle) &&
+        Math.min(...zapato.talles) >= Math.min(...selectedTalle)))
   );
+
 
   const listItems = filteredZapatos.map(zapato => (
     <Zapato
@@ -51,6 +54,9 @@ function App() {
       colores={zapato.colores}
       talles={zapato.talles}
       genero={zapato.genero}
+      tipo={zapato.tipo}
+      material_interno={zapato.material_interno}
+      material_externo={zapato.material_externo}
       descripcion={zapato.descripcion}
       nombre_color_estandar={zapato.nombre_color_estandar}
     />
@@ -58,15 +64,21 @@ function App() {
 
   function itemsObtenidos() {
     if (listItems === null || listItems.length === 0 || selectedTalle.size === 0) {
-      return <h1><Badge bg="light" text="dark">
-        No se encontraron resultados que cumplan con los criterios seleccionados
-      </Badge></h1>;
+      return <div className="d-flex flex-column align-items-start justify-content-center" style={{ zIndex: 1000 }}>        <h1>
+        <Badge bg="white" text="dark">No se encontraron resultados
+        </Badge>
+      </h1><Image
+        src={require(`./assets/images/no-resultados.jpg`)}
+        fluid
+        style={{ zIndex: 1000, height: '500px', width: '500px' }}
+      ></Image>
+        <div className='text-secondary'>Imagen de <a href="https://www.freepik.es/vector-gratis/dibujado-mano-ilustracion-datos_49342678.htm#query=no%20hay%20resultados&position=0&from_view=keyword&track=ais_hybrid&uuid=d88a0c34-3987-47f3-b725-d3e8cd952811">Freepik</a></div></div>;
     }
     return listItems;
   }
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <nav className="navbar">
         <div className="container-fluid">
           <div className="navbar-brand d-flex align-items-center justify-content-center w-100 p-0 m-0" style={{ 'max-height': '126px' }}>
@@ -74,8 +86,8 @@ function App() {
               src={require(`./assets/images/logo.jpg`)}
               fluid
             ></Image>
-            </div>
-            <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'><h1>Catálogo</h1></div>
+          </div>
+          <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'><h1>Catálogo</h1></div>
           <button className="navbar-toggler d-md-none mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

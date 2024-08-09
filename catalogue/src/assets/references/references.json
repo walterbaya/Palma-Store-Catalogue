@@ -1,6 +1,6 @@
 {
     "zapatos": [
-        {"nombre": "1849", "genero": "Mujer", "descripcion": "Wanama","talles": [35, 36, 37, 38, 39, 40, 41], "colores": ["estandar", "marron"], "nombre_color_estandar": "negro"},
+        {"nombre": "1849", "genero": "Mujer", "tipo": "Bota", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.","descripcion": " Material externo:  Material interno: cuero vacuno ","talles": [35, 41], "colores": ["estandar", "marrón"], "nombre_color_estandar": "negro"},
         {"nombre": "zapato1 copy", "genero": "Mujer",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [39, 40, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "suela"},
         {"nombre": "zapato1 copy 2","genero": "Hombre",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [35, 36, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "arizona"},
         {"nombre": "zapato1 copy 3","genero": "Mujer",  "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content." ,"talles": [39, 40, 41], "colores": ["estandar", "blanco"], "nombre_color_estandar": "bufalino"}
