@@ -10,16 +10,16 @@ import Badge from 'react-bootstrap/Badge';
 function App() {
   const zapatos = references["zapatos"];
   const initialTalles = new Set([35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]);
-  const initialTipos = new Set(['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin']);
+  //const initialTipos = new Set(['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin']);
   const [selectedGender, setSelectedGender] = useState('ambos');
   const [selectedTalle, setSelectedTalle] = useState(new Set(initialTalles));
-  const [selectedTipos, setSelectedTipos] = useState(new Set(initialTipos));
+  //const [selectedTipos, setSelectedTipos] = useState(new Set(initialTipos));
 
   const handleChange = (event) => {
     setSelectedGender(event.target.value);
   };
 
-  const handleChangeTipos = (event) => {
+  /*const handleChangeTipos = (event) => {
     const value = event.target.value;
     const updatedTipos = new Set(selectedTipos);
   
@@ -40,6 +40,7 @@ function App() {
  
     setSelectedTipos(updatedTipos);
   };
+  */
 
   const handleChangeTalle = (event) => {
     const value = event.target.value;
@@ -63,10 +64,10 @@ function App() {
     setSelectedTalle(updatedTalle);
   };
 
+  //(selectedTipos.has(zapato.tipo)) &&
   let filteredZapatos = zapatos.filter(zapato =>
     (selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender) &&
-    (selectedTipos.has(zapato.tipo))
-    &&
+    
     (selectedTalle.size === 0 ||
       (Math.max(...zapato.talles) <= Math.max(...selectedTalle) &&
         Math.min(...zapato.talles) >= Math.min(...selectedTalle)))
@@ -85,6 +86,79 @@ function App() {
       descripcion={zapato.descripcion}
       nombre_color_estandar={zapato.nombre_color_estandar} />
   ));
+
+  /** tipos
+   * 
+   *                   <!--
+                  <div className='mt-3'>
+                    <h5>Tipos</h5>
+                    <div className="position-sticky">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="todos"
+                          value="todos"
+                          checked={selectedTipos.size === initialTipos.size}
+                          onChange={handleChangeTipos}
+                        />
+                        <label className="form-check-label" htmlFor="todos">
+                          Todos
+                        </label>
+                      </div>
+                      {['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin'].map(tipo => (
+                        <div className="form-check" key={tipo}>
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id={tipo}
+                            value={tipo}
+                            checked={selectedTipos.has(tipo)}
+                            onChange={handleChangeTipos}
+                          />
+                          <label className="form-check-label" htmlFor={tipo}>
+                            {tipo}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+   */
+
+
+  /** tipos sidebar             <div className='mt-3'>
+    <h5>Tipos</h5>
+    <div className="position-sticky">
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="todos"
+          value="todos"
+          checked={selectedTipos.size === initialTipos.size}
+          onChange={handleChangeTipos}
+        />
+        <label className="form-check-label" htmlFor="todos">
+          Todos
+        </label>
+      </div>
+      {['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin'].map(tipo => (
+        <div className="form-check" key={tipo}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id={tipo}
+            value={tipo}
+            checked={selectedTipos.has(tipo)}
+            onChange={handleChangeTipos}
+          />
+          <label className="form-check-label" htmlFor={tipo}>
+            {tipo}
+          </label>
+        </div>
+      ))}
+    </div>
+  </div> */
 
   function itemsObtenidos() {
     if (listItems === null || listItems.length === 0 || selectedTalle.size === 0) {
@@ -210,39 +284,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className='mt-3'>
-                    <h5>Tipos</h5>
-                    <div className="position-sticky">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="todos"
-                          value="todos"
-                          checked={selectedTipos.size === initialTipos.size}
-                          onChange={handleChangeTipos}
-                        />
-                        <label className="form-check-label" htmlFor="todos">
-                          Todos
-                        </label>
-                      </div>
-                      {['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin'].map(tipo => (
-                        <div className="form-check" key={tipo}>
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id={tipo}
-                            value={tipo}
-                            checked={selectedTipos.has(tipo)}
-                            onChange={handleChangeTipos}
-                          />
-                          <label className="form-check-label" htmlFor={tipo}>
-                            {tipo}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+
 
                 </div>
               </nav>
@@ -338,40 +380,6 @@ function App() {
                 </div>
               </div>
 
-              
-              <div className='mt-3'>
-                    <h5>Tipos</h5>
-                    <div className="position-sticky">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="todos"
-                          value="todos"
-                          checked={selectedTipos.size === initialTipos.size}
-                          onChange={handleChangeTipos}
-                        />
-                        <label className="form-check-label" htmlFor="todos">
-                          Todos
-                        </label>
-                      </div>
-                      {['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin'].map(tipo => (
-                        <div className="form-check" key={tipo}>
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id={tipo}
-                            value={tipo}
-                            checked={selectedTipos.has(tipo)}
-                            onChange={handleChangeTipos}
-                          />
-                          <label className="form-check-label" htmlFor={tipo}>
-                            {tipo}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
 
             </div>
           </nav>
