@@ -38,14 +38,14 @@ code {
 /* Para pantallas entre 992px y 1200px */
 @media (min-width: 992px) and (max-width: 1199.98px) { 
   .color-images {
-    max-height: 96px !important;
+    max-height: 76px !important;
   }
 }
 
 /* Para pantallas mayores de 1200px (opcional) */
 @media (min-width: 1200px) { 
   .color-images {
-    max-height: 96px !important; /* Ajusta según sea necesario para pantallas grandes */
+    max-height: 60px !important; /* Ajusta según sea necesario para pantallas grandes */
   }
 }
 

@@ -114,7 +114,7 @@ class Zapato extends React.Component {
                     </Carousel>
 
                     {/* Colores */}
-                    <Card.Body className="text-center">
+                    <Card.Body>
                         {this.render_colores()}
                     </Card.Body>
 
