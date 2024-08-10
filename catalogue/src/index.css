@@ -17,7 +17,7 @@ code {
 /* Para pantallas menores de 576px */
 @media (max-width: 575.98px) { 
   .color-images {
-    height: 46px !important;
+    height: 106px !important;
   }
 }
 
