@@ -21,12 +21,11 @@ class Zapato extends React.Component {
             nombre_color_estandar: props.nombre_color_estandar || "",
             urls_imagenes: this.getImageUrls(props.nombre, "estandar"),
             showModal: false,
-            selectedImage: ""
+            selectedImage: "", // Añadido para el manejo del modal
         };
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // Actualizar las imágenes si `color_actual` cambia
         if (prevState.color_actual !== this.state.color_actual) {
             this.setState({
                 urls_imagenes: this.getImageUrls(this.props.nombre, this.state.color_actual)
@@ -43,8 +42,8 @@ class Zapato extends React.Component {
     }
 
     render_talles() {
-        const listItems = this.state.talles;
-        return <ul id="talles" className="list-group list-group-flush d-flex flex-row justify-content-center text-center m-0 p-0">{listItems[0]} al {listItems[1]}</ul>;
+        const [talleMin, talleMax] = this.state.talles;
+        return <ul id="talles" className="list-group list-group-flush d-flex flex-row justify-content-center text-center m-0 p-0">{talleMin} al {talleMax}</ul>;
     }
 
     capitalizeFirstLetter(str) {
@@ -53,48 +52,52 @@ class Zapato extends React.Component {
     }
 
     change_color = (color) => {
-        this.setState({ color_actual: color }, () => {
-            // Actualiza las URLs de las imágenes después de cambiar el color
-            this.setState({ urls_imagenes: this.getImageUrls(this.state.nombre, color) });
-        });
+        this.setState({ color_actual: color });
+    }
+
+    handleMouseLeave(color){
+        this.setState({ color_actual: color });
     }
 
     render_colores() {
-        const listItems = this.state.colores.map(color =>
-            <Image
-                key={color}
-                onClick={() => this.change_color(color)}
-                src={require(`../assets/images/zapatos/${this.state.nombre}/${color}/imagen1.jpg`)}
-                alt={`Color ${color}`}
-                className="mx-1 color-images" // Añadido para agregar margen horizontal
-                style={{ cursor: 'pointer' }}
-                fluid
-            />
-        );
+        const listItems = this.state.colores.map((color, index) => (
+            <picture key={color}>
+                <Image
+                    onClick={() => this.change_color(color)}
+                    src={require(`../assets/images/zapatos/${this.state.nombre}/${color}/imagen1.jpg`)}
+                    alt={`Color ${color}`}
+                    onMouseEnter={() => this.handleMouseLeave(color)}
+                    className="mx-1 color-images"
+                    style={{
+                        cursor: 'pointer',
+                    }}
+                    fluid
+                />
+            </picture>
+        ));
+
         return <div id="colores" className="d-flex flex-row justify-content-center">{listItems}</div>;
     }
 
     render_carousel_items() {
-        const listItems = this.state.urls_imagenes.map((imagen_url, index) => (
+        return this.state.urls_imagenes.map((imagen_url, index) => (
             <Carousel.Item key={index}>
+                <picture key = {this.state.nombre}>
                 <Image
                     src={imagen_url}
                     fluid
-                    onClick={() => this.handleImageClick(imagen_url)} // Manejar clic para agrandar la imagen
+                    onClick={() => this.handleImageClick(imagen_url)}
                     style={{ cursor: 'pointer' }}
                 />
-            </Carousel.Item>
+            </picture>
+            </Carousel.Item >
         ));
-        return listItems;
     }
 
     render_text_color() {
-        if (this.state.color_actual === "estandar") {
-            return this.capitalizeFirstLetter(this.state.nombre_color_estandar)
-        }
-        else {
-            return this.capitalizeFirstLetter(this.state.color_actual);
-        }
+        return this.capitalizeFirstLetter(
+            this.state.color_actual === "estandar" ? this.state.nombre_color_estandar : this.state.color_actual
+        );
     }
 
     handleImageClick = (image) => {
@@ -107,7 +110,7 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-sm-6  col-12 mb-5">
+            <div className="col-xl-3 col-sm-6 col-12 mb-5">
                 <Card>
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}
@@ -120,14 +123,13 @@ class Zapato extends React.Component {
 
                     <Card.Body>
                         <Card.Title>{this.capitalizeFirstLetter(this.state.nombre)}</Card.Title>
-                        <Card.Text className="text-secondary">Color:  {this.render_text_color()}</Card.Text>
+                        <Card.Text className="text-secondary">Color: {this.render_text_color()}</Card.Text>
                         <ul className="list-group list-group-flush m-0 p-0">
                             <li className="list-group-item list-group-item-action border-0 p-0">Tipo: {this.state.tipo}</li>
-                            <li className="list-group-item list-group-item-action border-0 p-0">Material Interno: {this.state.material_externo}</li>
-                            <li className="list-group-item list-group-item-action border-0 p-0">Material Externo: {this.state.material_interno}</li>
+                            <li className="list-group-item list-group-item-action border-0 p-0">Material Interno: {this.state.material_interno}</li>
+                            <li className="list-group-item list-group-item-action border-0 p-0">Material Externo: {this.state.material_externo}</li>
                         </ul>
                     </Card.Body>
-
 
                     {/* Género */}
                     <Card.Body className="text-center border-top">
@@ -138,7 +140,6 @@ class Zapato extends React.Component {
                     <Card.Body className="text-center border-top">
                         {this.render_talles()}
                     </Card.Body>
-
                 </Card>
 
                 {/* Modal para mostrar la imagen a pantalla completa */}

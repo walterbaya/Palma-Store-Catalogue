@@ -10,11 +10,35 @@ import Badge from 'react-bootstrap/Badge';
 function App() {
   const zapatos = references["zapatos"];
   const initialTalles = new Set([35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]);
+  const initialTipos = new Set(['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin']);
   const [selectedGender, setSelectedGender] = useState('ambos');
   const [selectedTalle, setSelectedTalle] = useState(new Set(initialTalles));
+  const [selectedTipos, setSelectedTipos] = useState(new Set(initialTipos));
 
   const handleChange = (event) => {
     setSelectedGender(event.target.value);
+  };
+
+  const handleChangeTipos = (event) => {
+    const value = event.target.value;
+    const updatedTipos = new Set(selectedTipos);
+  
+    if (value === "todos") {
+      if (selectedTipos.size === initialTipos.size) {
+        updatedTipos.clear();
+      } else {
+        initialTipos.forEach(tipos => updatedTipos.add(tipos));
+      }
+    } else {
+      const tipoValue = Number(value);
+      if (updatedTipos.has(tipoValue)) {
+        updatedTipos.delete(tipoValue);
+      } else {
+        updatedTipos.add(tipoValue);
+      }
+    }
+ 
+    setSelectedTipos(updatedTipos);
   };
 
   const handleChangeTalle = (event) => {
@@ -41,13 +65,14 @@ function App() {
 
   let filteredZapatos = zapatos.filter(zapato =>
     (selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender) &&
-    (selectedTalle.length === 0 ||
+    (selectedTipos.has(zapato.tipo))
+    &&
+    (selectedTalle.size === 0 ||
       (Math.max(...zapato.talles) <= Math.max(...selectedTalle) &&
         Math.min(...zapato.talles) >= Math.min(...selectedTalle)))
   );
 
-
-  const listItems = filteredZapatos.map(zapato => (
+  const listItems = filteredZapatos.map((zapato, index) => (
     <Zapato
       key={zapato.nombre}
       nombre={zapato.nombre}
@@ -58,21 +83,26 @@ function App() {
       material_interno={zapato.material_interno}
       material_externo={zapato.material_externo}
       descripcion={zapato.descripcion}
-      nombre_color_estandar={zapato.nombre_color_estandar}
-    />
+      nombre_color_estandar={zapato.nombre_color_estandar} />
   ));
 
   function itemsObtenidos() {
     if (listItems === null || listItems.length === 0 || selectedTalle.size === 0) {
-      return <div className="d-flex flex-column align-items-start justify-content-center" style={{ zIndex: 1000 }}>        <h1>
-        <Badge bg="white" text="dark">No se encontraron resultados
-        </Badge>
-      </h1><Image
-        src={require(`./assets/images/no-resultados.jpg`)}
-        fluid
-        style={{ zIndex: 1000, height: '500px', width: '500px' }}
-      ></Image>
-        <div className='text-secondary'>Imagen de <a href="https://www.freepik.es/vector-gratis/dibujado-mano-ilustracion-datos_49342678.htm#query=no%20hay%20resultados&position=0&from_view=keyword&track=ais_hybrid&uuid=d88a0c34-3987-47f3-b725-d3e8cd952811">Freepik</a></div></div>;
+      return (
+        <div className="d-flex flex-column align-items-start justify-content-center" style={{ zIndex: 1000 }}>
+          <h1>
+            <Badge bg="white" text="dark">No se encontraron resultados</Badge>
+          </h1>
+          <Image
+            src={require(`./assets/images/no-resultados.jpg`)}
+            fluid
+            style={{ zIndex: 1000, height: '500px', width: '500px' }}
+          />
+          <div className='text-secondary'>
+            Imagen de <a href="https://www.freepik.es/vector-gratis/dibujado-mano-ilustracion-datos_49342678.htm#query=no%20hay%20resultados&position=0&from_view=keyword&track=ais_hybrid&uuid=d88a0c34-3987-47f3-b725-d3e8cd952811">Freepik</a>
+          </div>
+        </div>
+      );
     }
     return listItems;
   }
@@ -81,13 +111,15 @@ function App() {
     <div className="container-fluid">
       <nav className="navbar">
         <div className="container-fluid">
-          <div className="navbar-brand d-flex align-items-center justify-content-center w-100 p-0 m-0" style={{ 'max-height': '126px' }}>
+          <div className="navbar-brand d-flex align-items-center justify-content-center w-100 p-0 m-0" style={{ 'maxHeight': '126px' }}>
             <Image
               src={require(`./assets/images/logo.jpg`)}
               fluid
-            ></Image>
+            />
           </div>
-          <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'><h1>Catálogo</h1></div>
+          <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'>
+            <h1>Catálogo</h1>
+          </div>
           <button className="navbar-toggler d-md-none mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -178,6 +210,40 @@ function App() {
                     </div>
                   </div>
 
+                  <div className='mt-3'>
+                    <h5>Tipos</h5>
+                    <div className="position-sticky">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="todos"
+                          value="todos"
+                          checked={selectedTipos.size === initialTipos.size}
+                          onChange={handleChangeTipos}
+                        />
+                        <label className="form-check-label" htmlFor="todos">
+                          Todos
+                        </label>
+                      </div>
+                      {['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin'].map(tipo => (
+                        <div className="form-check" key={tipo}>
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id={tipo}
+                            value={tipo}
+                            checked={selectedTipos.has(tipo)}
+                            onChange={handleChangeTipos}
+                          />
+                          <label className="form-check-label" htmlFor={tipo}>
+                            {tipo}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
               </nav>
             </div>
@@ -192,14 +258,14 @@ function App() {
               <h1 className="bg-light">Filtros</h1>
               <div className='mt-3'>
                 <h5>Género</h5>
-                <div className="d-flex flex-row flex-md-column position-sticky">
+                <div className="position-sticky">
                   <div className="form-check">
                     <input
                       className="form-check-input"
                       type="radio"
                       id="ambos"
                       value="ambos"
-                      name="gender_n"
+                      name="gender_f"
                       checked={selectedGender === 'ambos'}
                       onChange={handleChange}
                     />
@@ -213,7 +279,7 @@ function App() {
                       type="radio"
                       id="hombre"
                       value="hombre"
-                      name="gender_n"
+                      name="gender_f"
                       checked={selectedGender === 'hombre'}
                       onChange={handleChange}
                     />
@@ -227,7 +293,7 @@ function App() {
                       type="radio"
                       id="mujer"
                       value="mujer"
-                      name="gender_n"
+                      name="gender_f"
                       checked={selectedGender === 'mujer'}
                       onChange={handleChange}
                     />
@@ -240,7 +306,7 @@ function App() {
 
               <div className='mt-3'>
                 <h5>Talles</h5>
-                <div className="d-flex flex-row flex-md-column position-sticky">
+                <div className="position-sticky">
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -272,13 +338,49 @@ function App() {
                 </div>
               </div>
 
+              
+              <div className='mt-3'>
+                    <h5>Tipos</h5>
+                    <div className="position-sticky">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="todos"
+                          value="todos"
+                          checked={selectedTipos.size === initialTipos.size}
+                          onChange={handleChangeTipos}
+                        />
+                        <label className="form-check-label" htmlFor="todos">
+                          Todos
+                        </label>
+                      </div>
+                      {['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin'].map(tipo => (
+                        <div className="form-check" key={tipo}>
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id={tipo}
+                            value={tipo}
+                            checked={selectedTipos.has(tipo)}
+                            onChange={handleChangeTipos}
+                          />
+                          <label className="form-check-label" htmlFor={tipo}>
+                            {tipo}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
             </div>
           </nav>
         </div>
-
-        <div className="col-12 col-md-10 p-5">
-          <div className="row">
-            {itemsObtenidos()}
+        <div className="col-12 col-md-10">
+          <div className='container-fluid'>
+            <div className="row">
+              {itemsObtenidos()}
+            </div>
           </div>
         </div>
       </div>
