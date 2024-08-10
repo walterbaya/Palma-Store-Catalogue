@@ -34,12 +34,26 @@ class Zapato extends React.Component {
     }
 
     getImageUrls(nombre, color_actual) {
-        return [
-            require(`../assets/images/zapatos/${nombre}/${color_actual}/imagen1.jpg`),
-            require(`../assets/images/zapatos/${nombre}/${color_actual}/imagen2.jpg`),
-            require(`../assets/images/zapatos/${nombre}/${color_actual}/imagen3.jpg`)
-        ];
+        const imageNames = ['imagen1', 'imagen2', 'imagen3'];
+        const extensions = ['.jpg', '.JPG'];
+        const urls = [];
+
+        imageNames.forEach((imageName) => {
+            extensions.forEach((extension) => {
+                try {
+                    const imageUrl = require(`../assets/images/zapatos/${nombre}/${color_actual}/${imageName}${extension}`);
+                    urls.push(imageUrl); // Agrega la imagen a la lista si se carga correctamente
+                    return; // Detiene la búsqueda de otras extensiones para esta imagen
+                } catch (error) {
+                    // No hacer nada si ocurre un error, intentar con la siguiente extensión
+                }
+            });
+        });
+
+        return urls;
     }
+
+
 
     render_talles() {
         const [talleMin, talleMax] = this.state.talles;
@@ -55,8 +69,22 @@ class Zapato extends React.Component {
         this.setState({ color_actual: color });
     }
 
-    handleMouseLeave(color){
+    handleMouseLeave(color) {
         this.setState({ color_actual: color });
+    }
+
+    loadImage(nombre, color, imageName) {
+        const extensions = ['.jpg', '.JPG'];
+        for (const ext of extensions) {
+            try {
+                // Intenta requerir la imagen con cada extensión
+                return require(`../assets/images/zapatos/${nombre}/${color}/${imageName}${ext}`);
+            } catch (error) {
+                // Si ocurre un error, intenta la siguiente extensión
+            }
+        }
+        // Devuelve una imagen de reemplazo si ninguna extensión está disponible (opcional)
+        return null;
     }
 
     render_colores() {
@@ -64,7 +92,7 @@ class Zapato extends React.Component {
             <picture key={color}>
                 <Image
                     onClick={() => this.change_color(color)}
-                    src={require(`../assets/images/zapatos/${this.state.nombre}/${color}/imagen1.jpg`)}
+                    src={this.loadImage(this.state.nombre, color, 'imagen1')}
                     alt={`Color ${color}`}
                     onMouseEnter={() => this.handleMouseLeave(color)}
                     className="mx-1 color-images"
@@ -82,14 +110,14 @@ class Zapato extends React.Component {
     render_carousel_items() {
         return this.state.urls_imagenes.map((imagen_url, index) => (
             <Carousel.Item key={index}>
-                <picture key = {this.state.nombre}>
-                <Image
-                    src={imagen_url}
-                    fluid
-                    onClick={() => this.handleImageClick(imagen_url)}
-                    style={{ cursor: 'pointer' }}
-                />
-            </picture>
+                <picture key={this.state.nombre}>
+                    <Image
+                        src={imagen_url}
+                        fluid
+                        onClick={() => this.handleImageClick(imagen_url)}
+                        style={{ cursor: 'pointer' }}
+                    />
+                </picture>
             </Carousel.Item >
         ));
     }
