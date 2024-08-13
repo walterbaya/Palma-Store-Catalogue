@@ -112,6 +112,7 @@ class Zapato extends React.Component {
             <Carousel.Item key={index}>
                 <picture key={this.state.nombre}>
                     <Image
+                        className="carousel-image"
                         src={imagen_url}
                         fluid
                         loading="lazy"
