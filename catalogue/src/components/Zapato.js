@@ -114,6 +114,7 @@ class Zapato extends React.Component {
                     <Image
                         src={imagen_url}
                         fluid
+                        loading="lazy"
                         onClick={() => this.handleImageClick(imagen_url)}
                         style={{ cursor: 'pointer' }}
                     />
@@ -138,7 +139,7 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-sm-6 col-12 mb-5">
+            <div className="col-xl-3 col-6 mb-5">
                 <Card>
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}
