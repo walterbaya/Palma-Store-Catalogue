@@ -9,10 +9,10 @@ import Badge from 'react-bootstrap/Badge';
 
 function App() {
   const zapatos = references["zapatos"];
-  const initialTalles = new Set([35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]);
+  //const initialTalles = new Set([35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]);
   //const initialTipos = new Set(['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin']);
   const [selectedGender, setSelectedGender] = useState('ambos');
-  const [selectedTalle, setSelectedTalle] = useState(new Set(initialTalles));
+  //const [selectedTalle, setSelectedTalle] = useState(new Set(initialTalles));
   //const [selectedTipos, setSelectedTipos] = useState(new Set(initialTipos));
 
   const handleChange = (event) => {
@@ -42,6 +42,7 @@ function App() {
   };
   */
 
+  /*
   const handleChangeTalle = (event) => {
     const value = event.target.value;
     const updatedTalle = new Set(selectedTalle);
@@ -64,13 +65,18 @@ function App() {
     setSelectedTalle(updatedTalle);
   };
 
+  */
+
   //(selectedTipos.has(zapato.tipo)) &&
   let filteredZapatos = zapatos.filter(zapato =>
-    (selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender) &&
-    
+    (selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender) 
+    /*
+    &&
+
     (selectedTalle.size === 0 ||
       (Math.max(...zapato.talles) <= Math.max(...selectedTalle) &&
         Math.min(...zapato.talles) >= Math.min(...selectedTalle)))
+     */
   );
 
   const listItems = filteredZapatos.map((zapato, index) => (
@@ -125,6 +131,79 @@ function App() {
                   </div>
    */
 
+  /** Talles 1 */
+                  /*
+                  <div className='mt-3'>
+                    <h5>Talles</h5>
+                    <div className="position-sticky">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="todos"
+                          value="todos"
+                          checked={selectedTalle.size === initialTalles.size}
+                          onChange={handleChangeTalle}
+                        />
+                        <label className="form-check-label" htmlFor="todos">
+                          Todos
+                        </label>
+                      </div>
+                      {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(talle => (
+                        <div className="form-check" key={talle}>
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id={talle}
+                            value={talle}
+                            checked={selectedTalle.has(talle)}
+                            onChange={handleChangeTalle}
+                          />
+                          <label className="form-check-label" htmlFor={talle}>
+                            {talle}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  */
+
+  /** Talles 2 */                
+/**
+              <div className='mt-3'>
+                <h5>Talles</h5>
+                <div className="position-sticky">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      id="todos"
+                      value="todos"
+                      checked={selectedTalle.size === initialTalles.size}
+                      onChange={handleChangeTalle}
+                    />
+                    <label className="form-check-label" htmlFor="todos">
+                      Todos
+                    </label>
+                  </div>
+                  {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(talle => (
+                    <div className="form-check" key={talle}>
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        id={talle}
+                        value={talle}
+                        checked={selectedTalle.has(talle)}
+                        onChange={handleChangeTalle}
+                      />
+                      <label className="form-check-label" htmlFor={talle}>
+                        {talle}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div> */
 
   /** tipos sidebar             <div className='mt-3'>
     <h5>Tipos</h5>
@@ -160,8 +239,9 @@ function App() {
     </div>
   </div> */
 
+  //|| selectedTalle.size === 0
   function itemsObtenidos() {
-    if (listItems === null || listItems.length === 0 || selectedTalle.size === 0) {
+    if (listItems === null || listItems.length === 0) {
       return (
         <div className="d-flex flex-column align-items-start justify-content-center" style={{ zIndex: 1000 }}>
           <h1>
@@ -249,49 +329,14 @@ function App() {
                       </div>
                     </div>
                   </div>
-
-                  <div className='mt-3'>
-                    <h5>Talles</h5>
-                    <div className="position-sticky">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="todos"
-                          value="todos"
-                          checked={selectedTalle.size === initialTalles.size}
-                          onChange={handleChangeTalle}
-                        />
-                        <label className="form-check-label" htmlFor="todos">
-                          Todos
-                        </label>
-                      </div>
-                      {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(talle => (
-                        <div className="form-check" key={talle}>
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id={talle}
-                            value={talle}
-                            checked={selectedTalle.has(talle)}
-                            onChange={handleChangeTalle}
-                          />
-                          <label className="form-check-label" htmlFor={talle}>
-                            {talle}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-
-
                 </div>
               </nav>
             </div>
           </div>
         </div>
       </nav>
+
+
 
       <div className="row">
         <div className='col-12 col-md-2 d-md-block d-none'>
@@ -345,42 +390,6 @@ function App() {
                   </div>
                 </div>
               </div>
-
-              <div className='mt-3'>
-                <h5>Talles</h5>
-                <div className="position-sticky">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="todos"
-                      value="todos"
-                      checked={selectedTalle.size === initialTalles.size}
-                      onChange={handleChangeTalle}
-                    />
-                    <label className="form-check-label" htmlFor="todos">
-                      Todos
-                    </label>
-                  </div>
-                  {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(talle => (
-                    <div className="form-check" key={talle}>
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id={talle}
-                        value={talle}
-                        checked={selectedTalle.has(talle)}
-                        onChange={handleChangeTalle}
-                      />
-                      <label className="form-check-label" htmlFor={talle}>
-                        {talle}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-
             </div>
           </nav>
         </div>
