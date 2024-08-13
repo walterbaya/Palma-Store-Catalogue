@@ -52,6 +52,27 @@
         {"nombre": "990", "genero": "Hombre", "tipo": "Zapato", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar", "azul"], "nombre_color_estandar": "marrón"},
         {"nombre": "992", "genero": "Hombre", "tipo": "Zapato", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "marrón"},
         {"nombre": "994", "genero": "Hombre", "tipo": "Zapato", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
-        {"nombre": "2286", "genero": "Hombre", "tipo": "Zapato", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "marrón"}
+        {"nombre": "2286", "genero": "Hombre", "tipo": "Zapato", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "marrón"},
+
+        {"nombre": "1424", "genero": "Hombre", "tipo": "Bota", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
+        {"nombre": "1425", "genero": "Hombre", "tipo": "Bota", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
+
+        {"nombre": "832", "genero": "Hombre", "tipo": "Sandalia", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "azul"},
+        {"nombre": "2014", "genero": "Hombre", "tipo": "Sandalia", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar", "marrón"], "nombre_color_estandar": "negro"},
+        
+        
+        {"nombre": "159", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar", "azul"], "nombre_color_estandar": "negro"},
+        {"nombre": "980", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
+        {"nombre": "981", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar", "blanco"], "nombre_color_estandar": "negro"},
+        {"nombre": "982", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "suela"},
+        {"nombre": "984", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "suela"},
+        {"nombre": "988", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "marrón"},
+        {"nombre": "993", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
+        {"nombre": "2175", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
+        {"nombre": "2252", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "negro"},
+        {"nombre": "2254", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "marrón"},
+        {"nombre": "5427", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar"], "nombre_color_estandar": "azul"},
+        {"nombre": "5430", "genero": "Hombre", "tipo": "Zapatilla", "material_externo": "Cuero Vacuno.", "material_interno": "Cuero Vacuno.", "talles": [39, 46], "colores": ["estandar", "suela"], "nombre_color_estandar": "negro"}
+    
     ]
 }
