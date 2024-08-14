@@ -110,7 +110,7 @@ class Zapato extends React.Component {
     render_carousel_items() {
         return this.state.urls_imagenes.map((imagen_url, index) => (
             <Carousel.Item key={index}>
-                <picture key={this.state.nombre}>
+                <picture key={this.state.nombre} className="image-container d-block" >  
                     <Image
                         className="carousel-image"
                         src={imagen_url}
@@ -140,8 +140,8 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-md-4 col-6 mb-5">
-                <Card>
+            <div className="col-xl-3 col-md-4 col-6 mb-5 m-0 p-1 border-0">
+                <Card className="border-card">
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}
                     </Carousel>

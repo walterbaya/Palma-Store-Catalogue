@@ -394,11 +394,9 @@ function App() {
           </nav>
         </div>
         <div className="col-12 col-md-10">
-          <div className='container-fluid'>
             <div className="row">
               {itemsObtenidos()}
             </div>
-          </div>
         </div>
       </div>
     </div>
