@@ -115,7 +115,6 @@ class Zapato extends React.Component {
                         className="carousel-image"
                         src={imagen_url}
                         fluid
-                        loading="lazy"
                         onClick={() => this.handleImageClick(imagen_url)}
                         style={{ cursor: 'pointer' }}
                     />
@@ -140,7 +139,7 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-md-3 col-6 mb-5 m-0 p-1 border-0">
+            <div className="col-md-3 col-6 mb-5 m-0 p-1 border-0 shoe">
                 <Card className="border-card">
                     <Carousel interval={null} indicators={false} data-bs-theme="dark">
                         {this.render_carousel_items()}

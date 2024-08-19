@@ -84,6 +84,6 @@ body {
   }
 
   .color-images {
-    max-height: 100px !important;
+    height: 100px !important;
   }
 }

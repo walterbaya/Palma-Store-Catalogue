@@ -335,70 +335,69 @@ function App() {
           </div>
         </div>
       </nav>
-
-
-
-      <div className="row pt-3 px-0 mx-0">
-        <div className='col-12 col-md-2 d-md-block d-none'>
-          <nav id="sidebar">
-            <div className="d-flex flex-row flex-md-column position-sticky px-xl-5 px-2 justify-content-around">
-              <h1>Filtros</h1>
-              <div className='mt-3'>
-                <h5>Género</h5>
-                <div className="position-sticky">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id="ambos"
-                      value="ambos"
-                      name="gender_f"
-                      checked={selectedGender === 'ambos'}
-                      onChange={handleChange}
-                    />
-                    <label className="form-check-label" htmlFor="ambos">
-                      Ambos
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id="hombre"
-                      value="hombre"
-                      name="gender_f"
-                      checked={selectedGender === 'hombre'}
-                      onChange={handleChange}
-                    />
-                    <label className="form-check-label" htmlFor="hombre">
-                      Hombre
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      id="mujer"
-                      value="mujer"
-                      name="gender_f"
-                      checked={selectedGender === 'mujer'}
-                      onChange={handleChange}
-                    />
-                    <label className="form-check-label" htmlFor="mujer">
-                      Mujer
-                    </label>
+      <div className="container">
+        <div className="row pt-3 px-0 mx-0">
+          <div className='col-12 col-md-2 d-md-block d-none'>
+            <nav id="sidebar">
+              <div className="d-flex flex-row flex-md-column position-sticky px-xl-5 px-2 justify-content-around">
+                <h1>Filtros</h1>
+                <div className='mt-3'>
+                  <h5>Género</h5>
+                  <div className="position-sticky">
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="ambos"
+                        value="ambos"
+                        name="gender_f"
+                        checked={selectedGender === 'ambos'}
+                        onChange={handleChange}
+                      />
+                      <label className="form-check-label" htmlFor="ambos">
+                        Ambos
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="hombre"
+                        value="hombre"
+                        name="gender_f"
+                        checked={selectedGender === 'hombre'}
+                        onChange={handleChange}
+                      />
+                      <label className="form-check-label" htmlFor="hombre">
+                        Hombre
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="mujer"
+                        value="mujer"
+                        name="gender_f"
+                        checked={selectedGender === 'mujer'}
+                        onChange={handleChange}
+                      />
+                      <label className="form-check-label" htmlFor="mujer">
+                        Mujer
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </nav>
-        </div>
-        <div className="col-12 col-md-10">
+            </nav>
+          </div>
+          <div className="col-12 col-md-10">
             <div className="row">
               {itemsObtenidos()}
             </div>
-        </div>
+          </div>
 
+        </div>s
       </div>
     </div>
   );
