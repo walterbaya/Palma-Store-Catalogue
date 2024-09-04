@@ -261,16 +261,20 @@ function App() {
     return listItems;
   }
 
+  /* 
+  <div className="navbar-brand d-flex align-items-center justify-content-center w-100 p-0 m-0" style={{ 'maxHeight': '126px' }}>
+    <Image
+      src={require(`./assets/images/logo.jpg`)}
+      fluid
+    />
+  </div>
+  */
+
   return (
+
     <div className="container-fluid  mx-0 px-0">
       <nav className="navbar">
         <div className="container-fluid mx-0 px-0">
-          <div className="navbar-brand d-flex align-items-center justify-content-center w-100 p-0 m-0" style={{ 'maxHeight': '126px' }}>
-            <Image
-              src={require(`./assets/images/logo.jpg`)}
-              fluid
-            />
-          </div>
           <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'>
             <h1>Catálogo</h1>
           </div>
