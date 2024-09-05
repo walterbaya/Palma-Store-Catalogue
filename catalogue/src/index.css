@@ -6,9 +6,11 @@ body {
   text-rendering: optimizeLegibility !important;
 }
 
-.shoe-name {
-  font-style: normal grey !important;
+.shoe-name:hover {
+  font-style: italic blue !important;
 }
+
+
 
 .border-card {
   border: 1px solid #f5f5f5 !important;
@@ -22,8 +24,77 @@ body {
   object-fit: fill !important;
 }
 
+#resultados{
+  font-weight: 600;
+  text-shadow: 4px 4px 9px rgba(0,0,0,0.16);
+}
 
 
+
+/* === BASE HEADING === */ 
+
+h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+/* Style 9
+   ----------------------------- */
+.nine h1 {
+  text-align:center; font-size:50px; text-transform:uppercase; color:#222; letter-spacing:1px;
+  font-family:"Playfair Display", serif; font-weight:400;
+}
+.nine h1 span {
+  margin-top: 5px;
+    font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
+    text-transform: uppercase; font-family:"Raleway", sans-serif; font-weight:500;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.nine h1 span:after,.nine h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+  background-color:#f8f8f8;
+}
+
+/* ------- Helper Styles -------------*/
+
+.nine-div {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  padding: 2em;
+  margin: 1.5em auto;
+  border: 3px solid rgba(0, 0, 0, 0.08);
+}
+
+h1:before,
+h1:after {
+  background-color: #c50000;
+}
+
+a{
+  }
+
+a:hover{
+  color: darkgray !important;
+}
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -80,10 +151,11 @@ body {
 @media (min-width: 1200px) {
   .image-container {
     background-color: grey !important;
-    height: 260px !important;
+    height: 300px;
+    width: 303px;
   }
-
+  
   .color-images {
-    height: 80px !important;
+    max-height: 100px !important;
   }
 }

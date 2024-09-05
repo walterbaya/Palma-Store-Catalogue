@@ -57,7 +57,7 @@ class Zapato extends React.Component {
 
     render_talles() {
         const [talleMin, talleMax] = this.state.talles;
-        return <ul id="talles" className="list-group list-group-flush d-flex flex-row justify-content-center text-center m-0 p-0">{talleMin} al {talleMax}</ul>;
+        return <span>{talleMin} al {talleMax}</span>;
     }
 
     capitalizeFirstLetter(str) {
@@ -139,42 +139,48 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-md-4 col-6 mb-5 m-0 p-1 border-0 shoe">
+            <div className="col-xl-3 col-md-4 col-6 mb-5 m-0 p-2 border-0 shoe">
                 <Card className="border-card">
-                    <Carousel interval={null} indicators={false} data-bs-theme="dark">
-                        {this.render_carousel_items()}
-                    </Carousel>
-
-                    {/* Colores */}
+                    <picture key={this.state.nombre} className="image-container d-block" >
+                        <Image
+                            className="carousel-image"
+                            src={this.state.urls_imagenes[0]}
+                            fluid
+                            onClick={() => this.handleImageClick(this.state.urls_imagenes[0])}
+                            style={{ cursor: 'pointer' }}
+                        />
+                    </picture>
                     <Card.Body>
-                        {this.render_colores()}
+                        <Card.Text><a  onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} href="#" className="text-dark shoe-name text-decoration-none">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</a> </Card.Text>
                     </Card.Body>
 
-                    <Card.Body>
-                        <Card.Text className="shoe-name" >Articulo {this.capitalizeFirstLetter(this.state.nombre)}</Card.Text>
-                        <Card.Text className="text-secondary">Color: {this.render_text_color()}</Card.Text>
-                        <ul className="list-group list-group-flush m-0 p-0">
-                            <li className="list-group-item list-group-item-action border-0 p-0">Tipo: {this.state.tipo}</li>
-                            <li className="list-group-item list-group-item-action border-0 p-0">Material Interno: {this.state.material_interno}</li>
-                            <li className="list-group-item list-group-item-action border-0 p-0">Material Externo: {this.state.material_externo}</li>
-                        </ul>
-                    </Card.Body>
-
-                    {/* Género */}
-                    <Card.Body className="text-center border-top">
-                        <Card.Text>{this.state.genero}</Card.Text>
-                    </Card.Body>
-
-                    {/* Talles */}
-                    <Card.Body className="text-center border-top">
-                        {this.render_talles()}
-                    </Card.Body>
                 </Card>
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
                 <Modal show={this.state.showModal} onHide={this.handleClose} centered size="lg">
                     <Modal.Body>
-                        <Image src={this.state.selectedImage} fluid />
+                        <Carousel interval={null} indicators={false} data-bs-theme="dark">
+                            {this.render_carousel_items()}
+                        </Carousel>
+
+                        {/* Colores */}
+                        <Card.Body>
+                            {this.render_colores()}
+                        </Card.Body>
+
+                        <Card.Body>
+                            <Card.Text className="shoe-name">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</Card.Text>
+                            <Card.Text className="text-secondary">Color: {this.render_text_color()}</Card.Text>
+
+                            <ul className="list-group list-group-flush m-0 p-0">
+                                <li className="list-group-item list-group-item-action border-0 p-0">Tipo: {this.state.tipo}</li>
+                                <li className="list-group-item list-group-item-action border-0 p-0">Material Interno: {this.state.material_interno}</li>
+                                <li className="list-group-item list-group-item-action border-0 p-0">Material Externo: {this.state.material_externo}</li>
+                                <li className="list-group-item list-group-item-action border-0 p-0">Genero: {this.state.genero}</li>
+                                <li className="list-group-item list-group-item-action border-0 p-0">Talles: {this.render_talles()}</li>
+
+                            </ul>
+                        </Card.Body>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleClose}>

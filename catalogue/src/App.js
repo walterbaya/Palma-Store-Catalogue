@@ -272,19 +272,19 @@ function App() {
 
   return (
 
-    <div className="container-fluid  mx-0 px-0">
-      <nav className="navbar">
+    <div className="container-fluid mx-0 px-0">
+      <nav className="navbar bg-light">
         <div className="container-fluid mx-0 px-0">
-          <div className='w-100 d-flex justify-content-center mt-3 bg-dark text-white'>
-            <h1>Catálogo</h1>
+          <div className='nine-div nine w-100 d-flex justify-content-center'>
+            <h1>Catálogo<span>2024</span></h1> 
           </div>
           <button className="navbar-toggler d-md-none mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
-            <div className='col-12 col-md-2'>
+            <div className='col-12 col-md-2 '>
               <nav id="sidebar">
-                <div className="position-sticky p-5 justify-content-around d-md-none">
+                <div className="position-sticky p-5 justify-content-end d-md-none">
                   <h1>Filtros</h1>
                   <div className='mt-3'>
                     <h5>Género</h5>
@@ -339,18 +339,17 @@ function App() {
           </div>
         </div>
       </nav>
-      <div className="container">
+      <div className="container-fluid px-5">
         <div className="row pt-3 px-0 mx-0">
-          <div className='col-12 col-md-2 d-md-block d-none'>
+          <div className='col-12 col-md-2 d-md-flex d-none justify-content-end'>
             <nav id="sidebar">
-              <div className="d-flex flex-row flex-md-column position-sticky px-xl-5 px-2 justify-content-around">
-                <h1>Filtros</h1>
+              <div className="d-flex flex-row flex-md-column position-sticky">
                 <div className='mt-3'>
                   <h5>Género</h5>
                   <div className="position-sticky">
                     <div className="form-check">
                       <input
-                        className="form-check-input"
+                        className="form-check-input "
                         type="radio"
                         id="ambos"
                         value="ambos"
@@ -395,7 +394,10 @@ function App() {
               </div>
             </nav>
           </div>
-          <div className="col-12 col-md-10">
+          <div className="col-12 col-md-10 px-5 w-75">
+            <div className="row">
+              <h5 id="resultados">Resultados</h5>
+            </div>
             <div className="row">
               {itemsObtenidos()}
             </div>
