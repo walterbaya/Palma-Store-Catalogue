@@ -33,6 +33,14 @@ class Zapato extends React.Component {
         }
     }
 
+    /**
+     * Obtiene las urls de las 3 imagenes asociadas al zapato con nombre y color pasados por parametro.
+     *
+     * @param {string} nombre
+     * @param {string} color_actual
+     * @private
+     */
+
     getImageUrls(nombre, color_actual) {
         const imageNames = ['imagen1', 'imagen2', 'imagen3'];
         const extensions = ['.jpg', '.JPG'];
@@ -52,8 +60,6 @@ class Zapato extends React.Component {
 
         return urls;
     }
-
-
 
     render_talles() {
         const [talleMin, talleMax] = this.state.talles;
@@ -141,44 +147,52 @@ class Zapato extends React.Component {
         return (
             <div className="col-xl-3 col-md-4 col-6 mb-5 m-0 p-2 border-0 shoe">
                 <Card className="border-card">
-                    <picture key={this.state.nombre} className="image-container d-block" >
+                    <picture key={this.state.nombre} className="main-image-container d-block" >
                         <Image
-                            className="carousel-image"
-                            src={this.state.urls_imagenes[0]}
+                            className="main-image"
+                            src={this.loadImage(this.state.nombre, 'estandar', 'imagen1')}
                             fluid
                             onClick={() => this.handleImageClick(this.state.urls_imagenes[0])}
                             style={{ cursor: 'pointer' }}
                         />
                     </picture>
                     <Card.Body>
-                        <Card.Text><a  onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} href="#" className="text-dark shoe-name text-decoration-none">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</a> </Card.Text>
+                        <Card.Text><a onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} href="#" className="text-dark shoe-name text-decoration-none">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</a> </Card.Text>
                     </Card.Body>
 
                 </Card>
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
-                <Modal show={this.state.showModal} onHide={this.handleClose} centered size="lg">
-                    <Modal.Body>
-                        <Carousel interval={null} indicators={false} data-bs-theme="dark">
+                <Modal show={this.state.showModal} onHide={this.handleClose} centered size="xl" id="shoe-modal">
+                    <Modal.Body className="d-flex">
+                        <Carousel interval={null} indicators={false} data-bs-theme="dark" className="w-50">
                             {this.render_carousel_items()}
                         </Carousel>
 
-                        {/* Colores */}
-                        <Card.Body>
+                        <Card.Body className="d-flex flex-column p-5 w-50">
                             {this.render_colores()}
-                        </Card.Body>
-
-                        <Card.Body>
-                            <Card.Text className="shoe-name">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</Card.Text>
-                            <Card.Text className="text-secondary">Color: {this.render_text_color()}</Card.Text>
-
-                            <ul className="list-group list-group-flush m-0 p-0">
-                                <li className="list-group-item list-group-item-action border-0 p-0">Tipo: {this.state.tipo}</li>
-                                <li className="list-group-item list-group-item-action border-0 p-0">Material Interno: {this.state.material_interno}</li>
-                                <li className="list-group-item list-group-item-action border-0 p-0">Material Externo: {this.state.material_externo}</li>
-                                <li className="list-group-item list-group-item-action border-0 p-0">Genero: {this.state.genero}</li>
-                                <li className="list-group-item list-group-item-action border-0 p-0">Talles: {this.render_talles()}</li>
-
+                            <Card.Text className="text-dark bg-light fw-light p-1 rounded text-center">
+                                Artículo {this.capitalizeFirstLetter(this.state.nombre)}
+                            </Card.Text>
+                            <ul className="list-group">
+                                <li className="list-group-item border-0 p-0">
+                                    <strong>Color:</strong> {this.render_text_color()}
+                                </li>
+                                <li className="list-group-item border-0 p-0">
+                                    <strong>Tipo:</strong> {this.state.tipo}
+                                </li>
+                                <li className="list-group-item border-0 p-0">
+                                    <strong>Material Interno:</strong> {this.state.material_interno}
+                                </li>
+                                <li className="list-group-item border-0 p-0">
+                                    <strong>Material Externo:</strong> {this.state.material_externo}
+                                </li>
+                                <li className="list-group-item border-0 p-0">
+                                    <strong>Género:</strong> {this.state.genero}
+                                </li>
+                                <li className="list-group-item border-0 p-0">
+                                    <strong>Talles:</strong> {this.render_talles()}
+                                </li>
                             </ul>
                         </Card.Body>
                     </Modal.Body>

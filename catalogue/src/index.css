@@ -2,13 +2,34 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Arial, sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
   text-rendering: optimizeLegibility !important;
 }
+
+
+/* Navbar Brand */
+.navbar-brand h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+/* Form Check Labels */
+.form-check-label {
+  margin-left: 0.5rem;
+}
+
 
 .shoe-name:hover {
   font-style: italic blue !important;
 }
+
+/* Specific styling for the modal */
+#shoe-modal .modal-body,
+#shoe-modal .list-group-item,
+#shoe-modal .card-body {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 
 
@@ -17,7 +38,7 @@ body {
   border-radius: 1px !important;
 }
 
-.carousel-image {
+.main-image {
   opacity: 0.934 !important;
   width: 100% !important;
   height: 100% !important;
@@ -29,77 +50,15 @@ body {
   text-shadow: 4px 4px 9px rgba(0,0,0,0.16);
 }
 
-
-
-/* === BASE HEADING === */ 
-
-h1 {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  font-weight: 300;
-  font-size: 40px;
-  color: #080808;
-  -webkit-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-}
-
-/* Style 9
-   ----------------------------- */
-.nine h1 {
-  text-align:center; font-size:50px; text-transform:uppercase; color:#222; letter-spacing:1px;
-  font-family:"Playfair Display", serif; font-weight:400;
-}
-.nine h1 span {
-  margin-top: 5px;
-    font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
-    text-transform: uppercase; font-family:"Raleway", sans-serif; font-weight:500;
-
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    grid-template-rows: 27px 0;
-    grid-gap: 20px;
-    align-items: center;
-}
-
-.nine h1 span:after,.nine h1 span:before {
-    content: " ";
-    display: block;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    height: 5px;
-  background-color:#f8f8f8;
-}
-
-/* ------- Helper Styles -------------*/
-
-.nine-div {
-  position: relative;
-  width: 90%;
-  max-width: 500px;
-  padding: 2em;
-  margin: 1.5em auto;
-  border: 3px solid rgba(0, 0, 0, 0.08);
-}
-
-h1:before,
-h1:after {
-  background-color: #c50000;
-}
-
-a{
-  }
-
 a:hover{
   color: darkgray !important;
 }
 
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
 
-  .image-container {
+  .main-image-container {
     background-color: grey !important;
     height: 186px !important;
   }
@@ -112,7 +71,7 @@ a:hover{
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
 
-  .image-container {
+  .main-image-container {
     background-color: grey !important;
   }
 
@@ -123,7 +82,7 @@ a:hover{
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .image-container {
+  .main-image-container {
     background-color: grey !important;
     height: 200px !important;
   }
@@ -137,7 +96,7 @@ a:hover{
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .image-container {
+  .main-image-container {
     background-color: grey !important;
     height: 210px !important;
   }
@@ -149,13 +108,17 @@ a:hover{
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .image-container {
+  .main-image-container {
     background-color: grey !important;
-    height: 300px;
-    width: 303px;
+    width: 100%;
   }
   
   .color-images {
     max-height: 100px !important;
   }
+
+  .image-container{
+    max-width: 760px !important;
+  }
+
 }
