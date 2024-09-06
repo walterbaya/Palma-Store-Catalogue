@@ -71,11 +71,11 @@ function App() {
     return (
 
         <div className="container-fluid mx-0 px-0">
-            <nav className="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+            <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
                 <div className="container-fluid">
                     {/* Logo or Branding */}
-                    <a className="navbar-brand" >
-                        <h1 className="m-0">Catálogo <span className="text-primary">2024</span></h1>
+                    <a className="navbar-brand bg-dark" >
+                        <h1 className="m-0 text-secondary">Catálogo <span className="text-white">{new Date().getFullYear()}</span></h1>
                     </a>
 
                     {/* Toggler Button for Mobile */}
