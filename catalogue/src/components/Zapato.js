@@ -163,13 +163,13 @@ class Zapato extends React.Component {
                 </Card>
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
-                <Modal show={this.state.showModal} onHide={this.handleClose} centered size="xl" id="shoe-modal">
+                <Modal show={this.state.showModal} onHide={this.handleClose} centered size="xl" fullscreen = {true} id="shoe-modal">
                     <Modal.Body className="d-flex">
                         <Carousel interval={null} indicators={false} data-bs-theme="dark" className="w-50">
                             {this.render_carousel_items()}
                         </Carousel>
 
-                        <Card.Body className="d-flex flex-column p-5 w-50">
+                        <Card.Body className="d-flex flex-column p-5 w-50 ">
                             {this.render_colores()}
                             <Card.Text className="text-dark bg-light fw-light p-1 rounded text-center">
                                 Artículo {this.capitalizeFirstLetter(this.state.nombre)}

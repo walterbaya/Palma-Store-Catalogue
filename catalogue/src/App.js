@@ -199,7 +199,7 @@ function App() {
                             </div>
                         </nav>
                     </div>
-                    <div className="col-12 col-md-10 px-5 w-75">
+                    <div className="col-12 col-md-10 px-5" id="width-main-container">
                         <div className="row">
                             <h5 id="resultados">Resultados</h5>
                         </div>

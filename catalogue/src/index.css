@@ -78,6 +78,7 @@ a:hover{
   .color-images {
     height: 80px !important;
   }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -92,6 +93,10 @@ a:hover{
     height: 80px !important;
     object-fit: fill !important;
   }
+
+  #width-main-container{
+    width: 75% !important;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -104,6 +109,10 @@ a:hover{
   .color-images {
     height: 100px !important;
   }
+
+  #width-main-container{
+    width: 75% !important;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -114,11 +123,14 @@ a:hover{
   }
   
   .color-images {
-    max-height: 100px !important;
+    max-height: 200px !important;
   }
 
   .image-container{
     max-width: 760px !important;
   }
 
+  #width-main-container{
+    width: 75% !important;
+  }
 }
