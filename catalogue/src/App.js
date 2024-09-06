@@ -74,9 +74,9 @@ function App() {
             <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
                 <div className="container-fluid">
                     {/* Logo or Branding */}
-                    <a className="navbar-brand bg-dark" >
+                    <div className="navbar-brand bg-dark" >
                         <h1 className="m-0 text-secondary">Catálogo <span className="text-white">{new Date().getFullYear()}</span></h1>
-                    </a>
+                    </div>
 
                     {/* Toggler Button for Mobile */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
