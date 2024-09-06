@@ -157,7 +157,7 @@ class Zapato extends React.Component {
                         />
                     </picture>
                     <Card.Body>
-                        <Card.Text><a onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} href="#" className="text-dark shoe-name text-decoration-none">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</a> </Card.Text>
+                        <Card.Text><a onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} href="/" className="text-dark shoe-name text-decoration-none">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</a> </Card.Text>
                     </Card.Body>
 
                 </Card>
