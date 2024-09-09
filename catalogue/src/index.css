@@ -18,9 +18,13 @@ body {
   margin-left: 0.5rem;
 }
 
-
 .shoe-name:hover {
   font-style: italic blue !important;
+}
+
+#carousel {
+  object-fit: fill !important;
+  overflow: hidden !important;
 }
 
 /* Specific styling for the modal */
@@ -28,6 +32,10 @@ body {
 #shoe-modal .list-group-item,
 #shoe-modal .card-body {
   font-family: 'Roboto', sans-serif;
+}
+
+#image-carousel {
+  width: 100% !important;
 }
 
 
@@ -45,13 +53,23 @@ body {
   object-fit: fill !important;
 }
 
-#resultados{
-  font-weight: 600;
-  text-shadow: 4px 4px 9px rgba(0,0,0,0.16);
+.carousel-image{
+  opacity: 0.934 !important;
+  object-fit: fill !important;
 }
 
-a:hover{
+.carousel-image-container{
+  background-color: grey !important;
+  width: 100%;
+}
+
+a:hover {
   color: darkgray !important;
+}
+
+
+.color-images {
+  height: 60px !important;
 }
 
 
@@ -63,9 +81,6 @@ a:hover{
     height: 186px !important;
   }
 
-  .color-images {
-    height: 70px !important;
-  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -73,10 +88,6 @@ a:hover{
 
   .main-image-container {
     background-color: grey !important;
-  }
-
-  .color-images {
-    height: 80px !important;
   }
 
 }
@@ -88,15 +99,11 @@ a:hover{
     height: 200px !important;
   }
 
-  /* Estilos para dispositivos medianos */
-  .color-images {
-    height: 80px !important;
-    object-fit: fill !important;
-  }
 
-  #width-main-container{
+  #width-main-container {
     width: 75% !important;
   }
+
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -106,12 +113,12 @@ a:hover{
     height: 210px !important;
   }
 
-  .color-images {
-    height: 100px !important;
+  #width-main-container {
+    width: 75% !important;
   }
 
-  #width-main-container{
-    width: 75% !important;
+  .overflow-modal-body{
+    overflow: hidden !important;
   }
 }
 
@@ -121,16 +128,18 @@ a:hover{
     background-color: grey !important;
     width: 100%;
   }
-  
-  .color-images {
-    max-height: 200px !important;
-  }
 
-  .image-container{
-    max-width: 760px !important;
-  }
-
-  #width-main-container{
+  #width-main-container {
     width: 75% !important;
   }
+
+
+  #carousel-item {
+    padding: 2em;
+  }
+
+  .overflow-modal-body{
+    overflow: hidden !important;
+  }
+  
 }

@@ -73,10 +73,7 @@ class Zapato extends React.Component {
 
     change_color = (color) => {
         this.setState({ color_actual: color });
-    }
 
-    handleMouseLeave(color) {
-        this.setState({ color_actual: color });
     }
 
     loadImage(nombre, color, imageName) {
@@ -100,8 +97,7 @@ class Zapato extends React.Component {
                     onClick={() => this.change_color(color)}
                     src={this.loadImage(this.state.nombre, color, 'imagen1')}
                     alt={`Color ${color}`}
-                    onMouseEnter={() => this.handleMouseLeave(color)}
-                    className="mx-1 color-images"
+                    className ="me-2 color-images border rounded"
                     style={{
                         cursor: 'pointer',
                     }}
@@ -115,10 +111,10 @@ class Zapato extends React.Component {
 
     render_carousel_items() {
         return this.state.urls_imagenes.map((imagen_url, index) => (
-            <Carousel.Item key={index}>
-                <picture key={this.state.nombre} className="image-container d-block" >
+            <Carousel.Item key={index} id="carousel-item carousel-image-container d-block">
+                <picture key={this.state.nombre} className="carousel-image-container d-block">
                     <Image
-                        className="carousel-image"
+                        className="w-100 carousel-image"
                         src={imagen_url}
                         fluid
                         onClick={() => this.handleImageClick(imagen_url)}
@@ -163,44 +159,54 @@ class Zapato extends React.Component {
                 </Card>
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
-                <Modal show={this.state.showModal} onHide={this.handleClose} centered size="xl" fullscreen = {true} id="shoe-modal">
-                    <Modal.Body className="d-flex">
-                        <Carousel interval={null} indicators={false} data-bs-theme="dark" className="w-50">
-                            {this.render_carousel_items()}
-                        </Carousel>
-
-                        <Card.Body className="d-flex flex-column p-5 w-50 ">
-                            {this.render_colores()}
-                            <Card.Text className="text-dark bg-light fw-light p-1 rounded text-center">
-                                Artículo {this.capitalizeFirstLetter(this.state.nombre)}
-                            </Card.Text>
-                            <ul className="list-group">
-                                <li className="list-group-item border-0 p-0">
-                                    <strong>Color:</strong> {this.render_text_color()}
-                                </li>
-                                <li className="list-group-item border-0 p-0">
-                                    <strong>Tipo:</strong> {this.state.tipo}
-                                </li>
-                                <li className="list-group-item border-0 p-0">
-                                    <strong>Material Interno:</strong> {this.state.material_interno}
-                                </li>
-                                <li className="list-group-item border-0 p-0">
-                                    <strong>Material Externo:</strong> {this.state.material_externo}
-                                </li>
-                                <li className="list-group-item border-0 p-0">
-                                    <strong>Género:</strong> {this.state.genero}
-                                </li>
-                                <li className="list-group-item border-0 p-0">
-                                    <strong>Talles:</strong> {this.render_talles()}
-                                </li>
-                            </ul>
-                        </Card.Body>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Cerrar
+                <Modal show={this.state.showModal} onHide={this.handleClose} centered fullscreen={true} id="shoe-modal">
+                    <Modal.Header className="d-flex justify-content-end ">
+                        <Button variant="white" onClick={this.handleClose}>
+                            X
                         </Button>
-                    </Modal.Footer>
+                    </Modal.Header>
+                    <Modal.Body className="d-flex flex-row align-items-center overflow-modal-body container">
+                        <div className="row">
+                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-md-6 col-12 px-md-2 py-md-0" id="carousel">
+                                {this.render_carousel_items()}
+                            </Carousel>
+                            <Card.Body className="d-flex flex-column col-md-6 col-12 px-md-4">
+                                <Card.Title className="fw-light text-secondary border-bottom p-0 mt-3">
+                                    <h2 className="p-0 m-0">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
+                                </Card.Title>
+                                <br></br>
+                                <div className="d-flex justify-content-start">{this.render_colores()}</div>
+                                <ul className="list-group">
+                                    <br></br>
+                                    <li className="list-group-item border-0 p-0">
+                                        <strong>Color:</strong> {this.render_text_color()}
+                                    </li>
+
+                                    <br></br>
+                                    <li className="list-group-item border-0 p-0">
+                                        <strong>Talles:</strong> {this.render_talles()}
+                                    </li>
+
+                                    <br></br>
+                                    <li className="list-group-item border-0 p-0">
+                                        <strong>Tipo:</strong> {this.state.tipo}
+                                    </li>
+                                    <br></br>
+                                    <li className="list-group-item border-0 p-0">
+                                        <strong>Material Interno:</strong> {this.state.material_interno}
+                                    </li>
+                                    <br></br>
+                                    <li className="list-group-item border-0 p-0">
+                                        <strong>Material Externo:</strong> {this.state.material_externo}
+                                    </li>
+                                    <br></br>
+                                    <li className="list-group-item border-0 p-0">
+                                        <strong>Género:</strong> {this.state.genero}
+                                    </li>
+                                </ul>
+                            </Card.Body>
+                        </div>
+                    </Modal.Body>
                 </Modal>
             </div>
         );
