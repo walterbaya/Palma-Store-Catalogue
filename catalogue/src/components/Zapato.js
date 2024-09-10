@@ -111,10 +111,10 @@ class Zapato extends React.Component {
 
     render_carousel_items() {
         return this.state.urls_imagenes.map((imagen_url, index) => (
-            <Carousel.Item key={index} id="carousel-item carousel-image-container d-block">
-                <picture key={this.state.nombre} className="carousel-image-container d-block">
+            <Carousel.Item key={index} id="carousel-item carousel-image-container d-block ">
+                <picture key={this.state.nombre} className="carousel-image-container d-block ">
                     <Image
-                        className="w-100 carousel-image"
+                        className="w-100  carousel-image"
                         src={imagen_url}
                         fluid
                         onClick={() => this.handleImageClick(imagen_url)}
@@ -160,17 +160,17 @@ class Zapato extends React.Component {
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
                 <Modal show={this.state.showModal} onHide={this.handleClose} centered fullscreen={true} id="shoe-modal">
-                    <Modal.Header className="d-flex justify-content-end ">
+                    <Modal.Header className="d-sm-flex justify-content-end d-none">
                         <Button variant="white" onClick={this.handleClose}>
                             X
                         </Button>
                     </Modal.Header>
-                    <Modal.Body className="d-flex flex-row align-items-center overflow-modal-body container">
-                        <div className="row">
-                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-md-6 col-12 px-md-2 py-md-0" id="carousel">
+                    <Modal.Body className="d-flex flex-row overflow-modal-body justify-content-center align-items-start py-0">
+                        <div className="row px-5 d-flex align-items-center" id="carousel">
+                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-sm-6 col-12" id="carousel">
                                 {this.render_carousel_items()}
                             </Carousel>
-                            <Card.Body className="d-flex flex-column col-md-6 col-12 px-md-4">
+                            <Card.Body className="d-flex flex-column col-sm-6 col-12 p-4 p-3">
                                 <Card.Title className="fw-light text-secondary border-bottom p-0 mt-3">
                                     <h2 className="p-0 m-0">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
                                 </Card.Title>

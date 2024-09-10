@@ -23,8 +23,9 @@ body {
 }
 
 #carousel {
-  object-fit: fill !important;
+  object-fit: contain !important;
   overflow: hidden !important;
+  height: min-content !important;
 }
 
 /* Specific styling for the modal */
@@ -55,7 +56,7 @@ body {
 
 .carousel-image{
   opacity: 0.934 !important;
-  object-fit: fill !important;
+  object-fit: cover !important;
 }
 
 .carousel-image-container{
@@ -104,6 +105,7 @@ a:hover {
     width: 75% !important;
   }
 
+
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -131,11 +133,6 @@ a:hover {
 
   #width-main-container {
     width: 75% !important;
-  }
-
-
-  #carousel-item {
-    padding: 2em;
   }
 
   .overflow-modal-body{
