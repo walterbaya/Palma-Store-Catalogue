@@ -160,7 +160,7 @@ class Zapato extends React.Component {
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
                 <Modal show={this.state.showModal} onHide={this.handleClose} centered fullscreen={true} id="shoe-modal">
-                    <Modal.Header className="d-sm-flex justify-content-end d-none">
+                    <Modal.Header className="d-flex justify-content-end">
                         <Button variant="white" onClick={this.handleClose}>
                             X
                         </Button>
