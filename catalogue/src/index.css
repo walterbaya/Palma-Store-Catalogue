@@ -2,8 +2,32 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Roboto', sans-serif !important;
   text-rendering: optimizeLegibility !important;
+  font-family: "KleeOneRegular", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+input[type='radio'] {
+  accent-color: #232323 !important; 
+  background-color: #232323 !important;
+}
+
+
+@font-face {
+  font-family: 'KleeOneRegular';
+  src: local('KleeOneRegular'), url(./assets/fonts/KleeOne-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'HomemadeApple';
+  src: local('KleeOneRegular'), url(./assets/fonts/HomemadeApple-Regular.ttf) format('truetype');
+}
+
+
+@font-face {
+  font-family: 'KleeOneSemiBold';
+  src: local('KleeOneSemiBold'), url(./assets/fonts/KleeOne-SemiBold.ttf) format('truetype');
 }
 
 
@@ -39,6 +63,24 @@ body {
   width: 100% !important;
 }
 
+.homemade-apple {
+  font-family: "HomemadeApple", cursive !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  font-size: 44px !important;
+}
+
+.klee-one-regular {
+  font-family: "KleeOneRegular", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+.klee-one-semibold {
+  font-family: "KleeOneSemiBold", cursive !important; 
+  font-weight: 600 !important;
+  font-style: normal !important;
+}
 
 
 

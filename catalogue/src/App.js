@@ -9,26 +9,14 @@ import Badge from 'react-bootstrap/Badge';
 
 function App() {
     const zapatos = references["zapatos"];
-    //const initialTalles = new Set([35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]);
-    //const initialTipos = new Set(['Bota', 'Sandalia', 'Zapatos', 'Zapatilla', 'Mocasin']);
     const [selectedGender, setSelectedGender] = useState('ambos');
-    //const [selectedTalle, setSelectedTalle] = useState(new Set(initialTalles));
-    //const [selectedTipos, setSelectedTipos] = useState(new Set(initialTipos));
 
     const handleChange = (event) => {
         setSelectedGender(event.target.value);
     };
 
-    //(selectedTipos.has(zapato.tipo)) &&
     let filteredZapatos = zapatos.filter(zapato =>
         (selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender)
-        /*
-        &&
-    
-        (selectedTalle.size === 0 ||
-        (Math.max(...zapato.talles) <= Math.max(...selectedTalle) &&
-            Math.min(...zapato.talles) >= Math.min(...selectedTalle)))
-         */
     );
 
     const listItems = filteredZapatos.map((zapato, index) => (
@@ -45,7 +33,6 @@ function App() {
             nombre_color_estandar={zapato.nombre_color_estandar} />
     ));
 
-    //|| selectedTalle.size === 0
     function itemsObtenidos() {
         if (listItems === null || listItems.length === 0) {
             return (
@@ -67,15 +54,13 @@ function App() {
         return listItems;
     }
 
-
     return (
-
         <div className="container-fluid mx-0 px-0">
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <nav className="navbar navbar-light shadow-sm">
                 <div className="container-fluid">
                     {/* Logo or Branding */}
-                    <div className="navbar-brand bg-dark" >
-                        <h1 className="m-0 text-secondary">Catálogo <span className="text-white">{new Date().getFullYear()}</span></h1>
+                    <div className="navbar-brand w-50 p-3">
+                        <h1 className="m-0 text-secondary homemade-apple text-dark  justify-content-end d-flex">Catálogo {new Date().getFullYear()}</h1>
                     </div>
 
                     {/* Toggler Button for Mobile */}
@@ -90,7 +75,7 @@ function App() {
                         </ul>
 
                         {/* Sidebar/Filter for Mobile View */}
-                        <div className="d-md-none mt-4">
+                        <div className="mt-4">
                             <div className="position-sticky p-4 bg-light shadow rounded">
                                 <h5 className="mb-3">Filtros</h5>
                                 <div className="mb-3">
@@ -144,71 +129,10 @@ function App() {
                 </div>
             </nav>
 
-            <div className="container-fluid p-0 m-0">
-                <div className="row pt-3 px-0 mx-0">
-                    <div className='col-12 col-md-2 d-md-flex d-none p-0 m-0'>
-                        <nav className='w-100'>
-                            <div className="d-flex flex-row flex-md-column position-sticky justify-content-center align-items-center">
-                                <div className='mt-3'>
-                                    <h5>Género</h5>
-                                    <div className="position-sticky">
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input "
-                                                type="radio"
-                                                id="ambos"
-                                                value="ambos"
-                                                name="gender_f"
-                                                checked={selectedGender === 'ambos'}
-                                                onChange={handleChange}
-                                            />
-                                            <label className="form-check-label" htmlFor="ambos">
-                                                Ambos
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                id="hombre"
-                                                value="hombre"
-                                                name="gender_f"
-                                                checked={selectedGender === 'hombre'}
-                                                onChange={handleChange}
-                                            />
-                                            <label className="form-check-label" htmlFor="hombre">
-                                                Hombre
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                id="mujer"
-                                                value="mujer"
-                                                name="gender_f"
-                                                checked={selectedGender === 'mujer'}
-                                                onChange={handleChange}
-                                            />
-                                            <label className="form-check-label" htmlFor="mujer">
-                                                Mujer
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                    <div className="col-12 col-md-10 px-5" id="width-main-container">
-                        <div className="row">
-                            <h5 id="resultados">Resultados</h5>
-                        </div>
-                        <div className="row">
-                            {itemsObtenidos()}
-                        </div>
-                    </div>
-
-                </div>s
+            <div className="container">
+                <div className="row">
+                    {itemsObtenidos()}
+                </div>
             </div>
         </div>
     );

@@ -111,10 +111,10 @@ class Zapato extends React.Component {
 
     render_carousel_items() {
         return this.state.urls_imagenes.map((imagen_url, index) => (
-            <Carousel.Item key={index} id="carousel-item carousel-image-container d-block ">
-                <picture key={this.state.nombre} className="carousel-image-container d-block ">
+            <Carousel.Item key={index} >
+                <picture key={this.state.nombre}>
                     <Image
-                        className="w-100  carousel-image"
+                        className="w-100"
                         src={imagen_url}
                         fluid
                         onClick={() => this.handleImageClick(imagen_url)}
@@ -159,48 +159,48 @@ class Zapato extends React.Component {
                 </Card>
 
                 {/* Modal para mostrar la imagen a pantalla completa */}
-                <Modal show={this.state.showModal} onHide={this.handleClose} centered fullscreen={true} id="shoe-modal">
-                    <Modal.Header className="d-flex justify-content-end">
+                <Modal show={this.state.showModal} onHide={this.handleClose} centered fullscreen={true}>
+                    <Modal.Header className="d-flex justify-content-end shoe-modal">
                         <Button variant="white" onClick={this.handleClose}>
                             X
                         </Button>
                     </Modal.Header>
-                    <Modal.Body className="d-flex flex-row overflow-modal-body justify-content-center align-items-start py-0">
-                        <div className="row px-5 d-flex align-items-center" id="carousel">
-                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-sm-6 col-12" id="carousel">
+                    <Modal.Body className="overflow-modal-body py-0">
+                        <div className="row px-5 d-flex align-items-center">
+                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-sm-6 col-12">
                                 {this.render_carousel_items()}
                             </Carousel>
                             <Card.Body className="d-flex flex-column col-sm-6 col-12 p-4 p-3">
                                 <Card.Title className="fw-light text-secondary border-bottom p-0 mt-3">
-                                    <h2 className="p-0 m-0">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
+                                    <h2 className="p-0 m-0 klee-one-semibold text-dark py-4">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
                                 </Card.Title>
                                 <br></br>
                                 <div className="d-flex justify-content-start">{this.render_colores()}</div>
                                 <ul className="list-group">
                                     <br></br>
-                                    <li className="list-group-item border-0 p-0">
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Color:</strong> {this.render_text_color()}
                                     </li>
 
                                     <br></br>
-                                    <li className="list-group-item border-0 p-0">
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Talles:</strong> {this.render_talles()}
                                     </li>
 
                                     <br></br>
-                                    <li className="list-group-item border-0 p-0">
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Tipo:</strong> {this.state.tipo}
                                     </li>
                                     <br></br>
-                                    <li className="list-group-item border-0 p-0">
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Material Interno:</strong> {this.state.material_interno}
                                     </li>
                                     <br></br>
-                                    <li className="list-group-item border-0 p-0">
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Material Externo:</strong> {this.state.material_externo}
                                     </li>
                                     <br></br>
-                                    <li className="list-group-item border-0 p-0">
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Género:</strong> {this.state.genero}
                                     </li>
                                 </ul>
