@@ -63,13 +63,6 @@ input[type='radio'] {
   width: 100% !important;
 }
 
-.homemade-apple {
-  font-family: "HomemadeApple", cursive !important;
-  font-weight: 500 !important;
-  font-style: normal !important;
-  font-size: 44px !important;
-}
-
 .klee-one-regular {
   font-family: "KleeOneRegular", cursive !important;
   font-weight: 400 !important;
@@ -133,6 +126,12 @@ a:hover {
     background-color: grey !important;
   }
 
+  .homemade-apple {
+    font-family: "HomemadeApple", cursive !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -147,6 +146,12 @@ a:hover {
     width: 75% !important;
   }
 
+  .homemade-apple {
+    font-family: "HomemadeApple", cursive !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 2em !important;
+  }
 
 }
 
@@ -163,6 +168,13 @@ a:hover {
 
   .overflow-modal-body{
     overflow: hidden !important;
+  }
+
+  .homemade-apple {
+    font-family: "HomemadeApple", cursive !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 2em !important;
   }
 }
 
@@ -181,4 +193,10 @@ a:hover {
     overflow: hidden !important;
   }
   
+  .homemade-apple {
+    font-family: "HomemadeApple", cursive !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 2em !important;
+  }
 }
