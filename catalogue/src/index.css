@@ -117,6 +117,12 @@ a:hover {
     height: 186px !important;
   }
 
+  
+  .homemade-apple {
+    font-family: "HomemadeApple", cursive !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
