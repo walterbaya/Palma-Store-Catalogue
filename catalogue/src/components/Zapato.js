@@ -114,7 +114,7 @@ class Zapato extends React.Component {
             <Carousel.Item key={index} >
                 <picture key={this.state.nombre}>
                     <Image
-                        className="w-100"
+                        className="w-100 carousel-image"
                         src={imagen_url}
                         fluid
                         onClick={() => this.handleImageClick(imagen_url)}
@@ -166,8 +166,8 @@ class Zapato extends React.Component {
                         </Button>
                     </Modal.Header>
                     <Modal.Body className="overflow-modal-body py-0">
-                        <div className="row px-5 d-flex align-items-center">
-                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-sm-6 col-12">
+                        <div className="row d-flex align-items-center">
+                            <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-sm-6 col-12 px-0">
                                 {this.render_carousel_items()}
                             </Carousel>
                             <Card.Body className="d-flex flex-column col-sm-6 col-12 p-4 p-3">
