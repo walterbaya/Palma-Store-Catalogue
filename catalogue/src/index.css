@@ -79,8 +79,17 @@ input[type='radio'] {
   object-fit: fill !important;
 }
 
-a:hover {
+.nombre_articulo:hover {
   color: darkgray !important;
+  cursor: pointer !important;
+}
+
+.shoe-hover:hover {
+  opacity: 1 !important;
+  border: 1px solid rgba(87,87,87,0.8) !important;
+  -moz-box-sizing:border-box !important;
+  -webkit-box-sizing:border-box !important;
+  box-sizing:border-box !important;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */

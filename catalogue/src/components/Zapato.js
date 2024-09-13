@@ -97,7 +97,7 @@ class Zapato extends React.Component {
                     onClick={() => this.change_color(color)}
                     src={this.loadImage(this.state.nombre, color, 'imagen1')}
                     alt={`Color ${color}`}
-                    className ="me-2 color-images border rounded"
+                    className ="me-2 color-images border rounded "
                     style={{
                         cursor: 'pointer',
                     }}
@@ -141,8 +141,8 @@ class Zapato extends React.Component {
 
     render() {
         return (
-            <div className="col-xl-3 col-md-4 col-6 mb-5 m-0 p-2 border-0 shoe">
-                <Card className="border-card">
+            <div className="col-xl-3 col-md-4 col-6 mb-5 m-0 p-2 border-0">
+                <Card className="border-card shoe-hover">
                     <picture key={this.state.nombre} className="main-image-container d-block" >
                         <Image
                             className="main-image"
@@ -153,7 +153,7 @@ class Zapato extends React.Component {
                         />
                     </picture>
                     <Card.Body>
-                        <Card.Text><a onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} href="/" className="text-dark shoe-name text-decoration-none">Articulo {this.capitalizeFirstLetter(this.state.nombre)}</a> </Card.Text>
+                        <Card.Text onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} className="text-dark shoe-name text-decoration-none nombre_articulo">Articulo {this.capitalizeFirstLetter(this.state.nombre)} </Card.Text>
                     </Card.Body>
 
                 </Card>
@@ -165,44 +165,45 @@ class Zapato extends React.Component {
                             X
                         </Button>
                     </Modal.Header>
-                    <Modal.Body className="overflow-modal-body py-0">
-                        <div className="row d-flex align-items-center">
+                    <Modal.Body className="py-0 my-0">
+                        <div className="row d-flex align-items-start">
                             <Carousel interval={null} indicators={false} data-bs-theme="dark" className="col-sm-6 col-12 px-0">
                                 {this.render_carousel_items()}
                             </Carousel>
-                            <Card.Body className="d-flex flex-column col-sm-6 col-12 p-4 p-3">
+                            <Card.Body className="d-flex flex-column col-sm-6 col-12 px-3 py-0">
                                 <Card.Title className="fw-light text-secondary border-bottom p-0 mt-3">
                                     <h2 className="p-0 m-0 klee-one-semibold text-dark py-4">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
                                 </Card.Title>
-                                <br></br>
-                                <div className="d-flex justify-content-start">{this.render_colores()}</div>
+            
+                                <div className="d-flex justify-content-start py-4">{this.render_colores()}</div>
                                 <ul className="list-group">
-                                    <br></br>
+                                    
                                     <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Color:</strong> {this.render_text_color()}
                                     </li>
 
-                                    <br></br>
+                                    <li className="list-group-item border-0 p-0 klee-one-regular">
+                                        <strong>Género:</strong> {this.state.genero}
+                                    </li>
+
+                                    
                                     <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Talles:</strong> {this.render_talles()}
                                     </li>
 
-                                    <br></br>
+                                    
                                     <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Tipo:</strong> {this.state.tipo}
                                     </li>
-                                    <br></br>
+                                    
                                     <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Material Interno:</strong> {this.state.material_interno}
                                     </li>
-                                    <br></br>
+                                    
                                     <li className="list-group-item border-0 p-0 klee-one-regular">
                                         <strong>Material Externo:</strong> {this.state.material_externo}
                                     </li>
-                                    <br></br>
-                                    <li className="list-group-item border-0 p-0 klee-one-regular">
-                                        <strong>Género:</strong> {this.state.genero}
-                                    </li>
+                                    
                                 </ul>
                             </Card.Body>
                         </div>
