@@ -92,12 +92,12 @@ class Zapato extends React.Component {
 
     render_colores() {
         const listItems = this.state.colores.map((color, index) => (
-            <picture key={color}>
+            <picture key={color} >
                 <Image
                     onClick={() => this.change_color(color)}
                     src={this.loadImage(this.state.nombre, color, 'imagen1')}
                     alt={`Color ${color}`}
-                    className ="me-2 color-images border rounded "
+                    className ="me-2 color-images border shoe-hover rounded "
                     style={{
                         cursor: 'pointer',
                     }}
