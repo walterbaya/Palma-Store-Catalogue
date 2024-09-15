@@ -269,6 +269,10 @@ input[type='radio'] {
     height: 80px !important;
   }
 
+  .carousel-image{
+    max-height: 600px !important;
+  }
+
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
