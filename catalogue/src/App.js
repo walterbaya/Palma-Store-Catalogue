@@ -6,6 +6,7 @@ import references from './assets/references/references.json';
 import { useState } from 'react';
 import Image from 'react-bootstrap/esm/Image';
 import Badge from 'react-bootstrap/Badge';
+import Carousel from 'react-bootstrap/Carousel';
 
 function App() {
     const zapatos = references["zapatos"];
@@ -54,20 +55,49 @@ function App() {
         return listItems;
     }
 
+
+    function renderCarousel() {
+        return (
+            <Carousel indicators={false} controls={false} fade={true} interval={5000} className="carousel-height" >
+                <Carousel.Item>
+                    <img className="img-fluid w-100 d-block carouse-main-image-height" src={require('./assets/images/shoe1.jpg')} alt="Shoe1" />
+                    <Carousel.Caption>
+                        <h3>First slide label</h3>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img className="img-fluid w-100 d-block carouse-main-image-height" src={require('./assets/images/shoe2.jpg')} alt="Shoe2" />
+                    <Carousel.Caption>
+                        <h3>Second slide label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img className="img-fluid w-100 d-block carouse-main-image-height" src={require('./assets/images/shoe3.jpg')} alt="Shoe3" />
+                    <Carousel.Caption>
+                        <h3>Third slide label</h3>
+                        <p>
+                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                        </p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
+        );
+    }
+
     return (
-        <div className="container-fluid mx-0 px-0">
-            <nav className="navbar navbar-light shadow-sm">
-                <div className="container-fluid">
+        <div className="container-fluid mx-0 px-0 ">
+            <nav className="navbar navbar-light shadow-sm d-flex align-items-center">
+                {/* Toggler Button for Mobile it should open a modal*/}
+                <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="justify-content-center text-center w-50">
                     {/* Logo or Branding */}
-                    <div className="navbar-brand w-50 p-3">
-                        <h1 className="m-0 text-secondary homemade-apple text-dark  justify-content-end d-flex">Catálogo {new Date().getFullYear()}</h1>
+                    <div className="navbar-brand p-3">
+                        <h1 className="m-0 anton-regular px-2">Catálogo {new Date().getFullYear()}</h1>
                     </div>
-
-                    {/* Toggler Button for Mobile */}
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
                     {/* Navbar Links and Content */}
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto mb-2 mb-md-0">
@@ -127,7 +157,18 @@ function App() {
                         </div>
                     </div>
                 </div>
+                <div className="w-25"></div>
             </nav>
+
+
+            <div className="jumbotron jumbotron-fluid">
+                {renderCarousel()}
+                <div className="p-3">
+                    <h1 className="display-4">Fluid jumbotron</h1>
+                    <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div>
+
+            </div>
 
             <div className="container">
                 <div className="row">

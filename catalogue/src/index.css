@@ -3,6 +3,35 @@ input[type='radio'] {
   background-color: #232323 !important;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Courgette&family=Rock+Salt&display=swap');
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Color Theme Swatches in Hex */
+.bg-light-brown { background-color: #D9731A; }
+.bg-brown { background-color: #A67F5D; }
+.bg-red { background-color: #A6430A; }
+.bg-dark-brown { background-color: #592D14; }
+.bg-black { background-color: #260F07; }
+
+.text-light-brown { color: #D9731A !important; }
+.text-brown { color: #A67F5D !important; }
+.text-red { color: #A6430A !important; }
+.text-dark-brown { color: #592D14 !important; }
+.text-black { color: #260F07 !important; }
+ 
+.underline{
+  text-decoration-line: underline; 
+  text-decoration-style: solid; 
+  text-decoration-color: linear-gradient(to right bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff); 
+  text-decoration-thickness: 2px; 
+  text-underline-offset: 4px;
+}
+
 
 @font-face {
   font-family: 'KleeOneRegular';
@@ -11,7 +40,7 @@ input[type='radio'] {
 
 @font-face {
   font-family: 'HomemadeApple';
-  src: local('KleeOneRegular'), url(./assets/fonts/HomemadeApple-Regular.ttf) format('truetype');
+  src: local('HomemadeApple'), url(./assets/fonts/HomemadeApple-Regular.ttf) format('truetype');
 }
 
 
@@ -103,6 +132,11 @@ input[type='radio'] {
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+
+  .carouse-main-image-height{
+    height: 460px !important;
+  }
+
 
   .main-image-container {
     background-color: grey !important;
