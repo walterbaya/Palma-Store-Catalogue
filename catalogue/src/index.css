@@ -2,6 +2,9 @@ input[type='radio'] {
   display: none !important;
 }
 
+.carousel-indicators [data-bs-target] {
+    
+  }
 
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Courgette&family=Rock+Salt&display=swap');
@@ -25,13 +28,40 @@ input[type='radio'] {
 .text-red { color: #595959 !important; }
 .text-dark-brown { color: #262626 !important; }
 .text-black { color: #0D0D0D !important; }
- 
+
 .underline{
-  text-decoration-line: underline; 
-  text-decoration-style: solid; 
-  text-decoration-color: linear-gradient(to right bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff); 
-  text-decoration-thickness: 2px; 
-  text-underline-offset: 4px;
+  padding: 30px 0 8px !important;
+  position: relative !important;
+}
+
+.underline::before{
+  content: "" !important;
+  position: absolute !important;
+  left: 45% !important;
+  bottom: 15% !important;
+  width: 80% !important;
+  height: 46% !important;
+  transform: skew(-12deg) translateX(-50%) !important;
+  background: #BFB6B0 !important;
+  z-index: -1 !important;
+}
+
+
+#contacto-underline{
+  position: relative !important;
+  z-index: 0 !important;
+}
+
+#contacto-underline::before{
+  content: "" !important;
+  position: absolute !important;
+  left: 44% !important;
+  bottom: 0% !important;
+  width: 95% !important;
+  height: 40% !important;
+  transform: skew(-12deg) translateX(-50%) !important;
+  background: #BFB6B0 !important;
+  z-index: -1 !important;
 }
 
 
@@ -129,22 +159,27 @@ input[type='radio'] {
   -moz-box-sizing: border-box !important;
   -webkit-box-sizing: border-box !important;
   box-sizing: border-box !important;
-
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-
-  .carouse-main-image-height{
-    height: 460px !important;
+  .contact-us{
+    height: 166px !important;
   }
 
+
+  .separate-navbar{
+    margin-top: 5em !important;
+  }
 
   .main-image-container {
     background-color: grey !important;
     height: 186px !important;
   }
 
+  .carousel-main-image-height{
+    height: 460px !important;
+  }
 
   .homemade-apple {
     font-family: "HomemadeApple", cursive !important;
@@ -306,7 +341,7 @@ input[type='radio'] {
   }
 
   .carousel-image{
-    max-height: 600px !important;
+    max-height: auto !important;
   }
 
   body {
