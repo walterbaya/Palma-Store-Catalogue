@@ -1,7 +1,8 @@
 input[type='radio'] {
-  accent-color: #232323 !important;
-  background-color: #232323 !important;
+  display: none !important;
 }
+
+
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Courgette&family=Rock+Salt&display=swap');
 
@@ -11,18 +12,19 @@ input[type='radio'] {
   font-style: normal;
 }
 
-/* Color Theme Swatches in Hex */
-.bg-light-brown { background-color: #D9731A; }
-.bg-brown { background-color: #A67F5D; }
-.bg-red { background-color: #A6430A; }
-.bg-dark-brown { background-color: #592D14; }
-.bg-black { background-color: #260F07; }
 
-.text-light-brown { color: #D9731A !important; }
-.text-brown { color: #A67F5D !important; }
-.text-red { color: #A6430A !important; }
-.text-dark-brown { color: #592D14 !important; }
-.text-black { color: #260F07 !important; }
+/* Color Theme Swatches in Hex */
+.bg-light-brown { background-color: #8C8079 !important; }
+.bg-brown { background-color: #BFB6B0 !important; }
+.bg-red { background-color: #595959 !important; }
+.bg-dark-brown { background-color: #262626 !important; }
+.bg-black { background-color: #0D0D0D !important; }
+
+.text-light-brown { color: #8C8079 !important; }
+.text-brown { color:  #BFB6B0 !important; }
+.text-red { color: #595959 !important; }
+.text-dark-brown { color: #262626 !important; }
+.text-black { color: #0D0D0D !important; }
  
 .underline{
   text-decoration-line: underline; 

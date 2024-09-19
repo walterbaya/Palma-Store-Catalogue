@@ -88,77 +88,47 @@ function App() {
 
     return (
         <div className="container-fluid mx-0 px-0 ">
-            <nav className="navbar navbar-light shadow-sm d-flex align-items-center">
+            <nav className="navbar navbar-light shadow-sm d-flex align-items-center row">
                 {/* Toggler Button for Mobile it should open a modal*/}
-                <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="col-2 navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="justify-content-center text-center w-50">
+                <div className="col-8 justify-content-center text-center">
                     {/* Logo or Branding */}
                     <div className="navbar-brand p-3">
-                        <h1 className="m-0 anton-regular px-2">Catálogo {new Date().getFullYear()}</h1>
-                    </div>
-                    {/* Navbar Links and Content */}
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav ms-auto mb-2 mb-md-0">
-                            {/* Add your nav links here if needed */}
-                        </ul>
-
-                        {/* Sidebar/Filter for Mobile View */}
-                        <div className="mt-4">
-                            <div className="position-sticky p-4 bg-light shadow rounded">
-                                <h5 className="mb-3">Filtros</h5>
-                                <div className="mb-3">
-                                    <h6 className="text-muted">Género</h6>
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            id="ambos"
-                                            value="ambos"
-                                            name="gender"
-                                            checked={selectedGender === 'ambos'}
-                                            onChange={handleChange}
-                                        />
-                                        <label className="form-check-label" htmlFor="ambos">
-                                            Ambos
-                                        </label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            id="hombre"
-                                            value="hombre"
-                                            name="gender"
-                                            checked={selectedGender === 'hombre'}
-                                            onChange={handleChange}
-                                        />
-                                        <label className="form-check-label" htmlFor="hombre">
-                                            Hombre
-                                        </label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            id="mujer"
-                                            value="mujer"
-                                            name="gender"
-                                            checked={selectedGender === 'mujer'}
-                                            onChange={handleChange}
-                                        />
-                                        <label className="form-check-label" htmlFor="mujer">
-                                            Mujer
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h1 className="m-0 anton-regular">Catálogo {new Date().getFullYear()}</h1>
                     </div>
                 </div>
-                <div className="w-25"></div>
-            </nav>
+                <div className="col-2"></div>
+                {/* Navbar Links and Content */}
+                <div className="collapse navbar-collapse col-12" id="navbarNav">
+                    <ul className="btn-group btn-group-toggle bg-dark-brown p-1 d-flex " data-toggle="buttons">
+                        <label className={`btn  ${selectedGender === 'ambos' ? 'bg-light-brown' : 'bg-brown'}`}>
+                            <input id="ambos"
+                                value="ambos"
+                                name="gender"
+                                onChange={handleChange} type="radio" /> Ambos
+                            
+                        </label>
+                        <label className={`btn  ${selectedGender === 'hombre' ? 'bg-light-brown' : 'bg-brown'}`}>
+                            <input id="hombre"
+                                value="hombre"
+                                name="gender"
+                                onChange={handleChange}
+                                type="radio" /> Hombre
+                        </label>
+
+                        <label className={`btn  ${selectedGender === 'mujer' ? 'bg-light-brown' : 'bg-brown'}`}>
+                            <input type="radio"
+                                id="mujer"
+                                value="mujer"
+                                name="gender"
+                                onChange={handleChange} /> Mujer
+                        </label>
+                    </ul>
+
+                </div>
+            </nav >
 
 
             <div className="jumbotron jumbotron-fluid">
@@ -175,7 +145,7 @@ function App() {
                     {itemsObtenidos()}
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
