@@ -144,7 +144,7 @@ function App() {
                 </section>
             </div>
 
-            <footer className="row bg-dark-brown w-100 mx-0 contact-us py-2  my-0">
+            <footer className="row bg-dark-brown w-100 mx-0 contact-us py-2  my-0 d-none">
                 <div className="col-12 py-2 bg-white">
                     <div class="d-flex flex-row justify-content-center px-4 ">
                         <h3 class="text-center display-4" id="contacto-underline">Contactanos</h3>
