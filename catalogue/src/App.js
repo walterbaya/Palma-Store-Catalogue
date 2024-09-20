@@ -131,7 +131,7 @@ function App() {
             </nav >
 
 
-            <div className="jumbotron jumbotron-fluid bg-white separate-navbar">
+            <div className="jumbotron jumbotron-fluid bg-white separate-navbar d-none">
                 <section className="p-0">
                     <h1 id="titulo-principal" className="display-4 p-3">Fluid jumbotron</h1>
                     <p className="lead px-3">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
@@ -139,8 +139,8 @@ function App() {
                 <div className='py-2'>{renderCarousel()}</div>
             </div>
 
-            <div className="container">
-                <section className="row p-2">
+            <div className="container mt-5">
+                <section className="row pt-5 px-2">
                     {itemsObtenidos()}
                 </section>
             </div>
