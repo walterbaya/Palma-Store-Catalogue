@@ -250,6 +250,10 @@ input[type='radio'] {
     width: 100%;
   }
 
+  .main-image{
+    height: 270px !important;
+  }
+
   #width-main-container {
     width: 75% !important;
   }
@@ -270,7 +274,7 @@ input[type='radio'] {
   }
 
   .carousel-image{
-    max-height: 600px !important;
+    min-height: 666px !important;
   }
 
   body {
