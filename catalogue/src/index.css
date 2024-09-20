@@ -2,11 +2,6 @@ input[type='radio'] {
   display: none !important;
 }
 
-.carousel-indicators [data-bs-target] {
-    
-  }
-
-
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Courgette&family=Rock+Salt&display=swap');
 
 .anton-regular {
@@ -31,6 +26,7 @@ input[type='radio'] {
 
 .underline{
   padding: 30px 0 8px !important;
+  z-index: 1;
   position: relative !important;
 }
 
@@ -167,6 +163,12 @@ input[type='radio'] {
     height: 166px !important;
   }
 
+  .shoe-color-name{
+    padding: 0 !important;
+    margin-top: 0 !important;
+    font-size: x-small !important;
+  }
+
 
   .separate-navbar{
     margin-top: 5em !important;
@@ -241,7 +243,6 @@ input[type='radio'] {
     background-color: grey !important;
     height: 200px !important;
   }
-
 
   #width-main-container {
     width: 75% !important;

@@ -17,7 +17,8 @@ class Zapato extends React.Component {
             material_externo: props.material_externo || "",
             tipo: props.tipo || "",
             color_actual: "estandar",
-            nombre_color_estandar: props.nombre_color_estandar || "",
+            nombre_color_estandar: props.nombre_color_estandar,
+            nombre_color_seleccionado: props.nombre_color_seleccionado || "",
             urls_imagenes: this.getImageUrls(props.nombre, "estandar"),
             showModal: false,
             selectedImage: "", // Añadido para el manejo del modal
@@ -126,7 +127,7 @@ class Zapato extends React.Component {
 
     render_text_color() {
         return this.capitalizeFirstLetter(
-            this.state.color_actual === "estandar" ? this.state.nombre_color_estandar : this.state.color_actual
+            this.state.color_actual === "estandar" ? this.state.nombre_color_seleccionado : this.state.color_actual
         );
     }
 
@@ -145,14 +146,18 @@ class Zapato extends React.Component {
                     <picture key={this.state.nombre} className="main-image-container d-block" >
                         <Image
                             className="main-image"
-                            src={this.loadImage(this.state.nombre, 'estandar', 'imagen1')}
+                            src={this.loadImage(this.state.nombre, this.state.nombre_color_seleccionado, 'imagen1')}
                             fluid
                             onClick={() => this.handleImageClick(this.state.urls_imagenes[0])}
                             style={{ cursor: 'pointer' }}
                         />
                     </picture>
                     <Card.Body>
-                        <Card.Text onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} className="text-dark shoe-name text-decoration-none nombre_articulo">Articulo {this.capitalizeFirstLetter(this.state.nombre)} </Card.Text>
+                        <Card.Text onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} className="text-dark shoe-name text-decoration-none nombre_articulo">
+                            <strong>Articulo {this.capitalizeFirstLetter(this.state.nombre)}</strong> <br/>
+                            <span className="shoe-color-name"> <strong>Color: </strong> {((this.state.nombre_color_seleccionado ===  'estandar') ? this.state.nombre_color_estandar : this.state.nombre_color_seleccionado)} </span>
+                        </Card.Text>
+                        
                     </Card.Body>
 
                 </Card>
@@ -165,7 +170,7 @@ class Zapato extends React.Component {
                         </button>
                         <div className="col-8 justify-content-center text-center">
                             <div className="navbar-brand">
-                                <h1 className="m-0 anton-regular underline bg-brown p-0">Catálogo {new Date().getFullYear()}</h1>
+                                <h1 className="m-0 anton-regular py-2 rounded underline">Catálogo {new Date().getFullYear()}</h1>
                             </div>
                         </div>
                         <div className="col-2"></div>
@@ -176,12 +181,12 @@ class Zapato extends React.Component {
                     </Modal.Header>
                     <Modal.Body className="py-0 my-0">
                         <div className="row d-flex align-items-start">
-                            <Carousel interval={null} controls={false} indicators={true} data-bs-theme="dark" className="col-sm-6 col-12 px-0">
+                            <Carousel interval={null} controls={false} indicators={true} data-bs-theme="dark" className="col-sm-6 col-12 px-0 bg-grey">
                                 {this.render_carousel_items()}
                             </Carousel>
                             <Card.Body className="d-flex flex-column col-sm-6 col-12 px-3 py-0">
                                 <Card.Title className="fw-light text-secondary border-bottom p-0 mt-3">
-                                    <h2 className="p-0 m-0 klee-one-semibold text-dark py-4">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
+                                    <h2 className="p-0 m-0 klee-one-semibold big-letter text-dark py-4">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
                                 </Card.Title>
 
                                 <div className="d-flex justify-content-start py-4">{this.render_colores()}</div>

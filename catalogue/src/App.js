@@ -27,18 +27,19 @@ function App() {
     );
 
     const listItems = filteredZapatos.map((zapato, index) => (
-        <Zapato
-            key={zapato.nombre}
-            nombre={zapato.nombre}
-            colores={zapato.colores}
-            talles={zapato.talles}
-            genero={zapato.genero}
-            tipo={zapato.tipo}
-            material_interno={zapato.material_interno}
-            material_externo={zapato.material_externo}
-            descripcion={zapato.descripcion}
-            nombre_color_estandar={zapato.nombre_color_estandar} />
-    ));
+        zapato.colores.map((color, index) =>
+            <Zapato key={zapato.nombre}
+                nombre={zapato.nombre}
+                colores={zapato.colores}
+                talles={zapato.talles}
+                genero={zapato.genero}
+                tipo={zapato.tipo}
+                material_interno={zapato.material_interno}
+                material_externo={zapato.material_externo}
+                descripcion={zapato.descripcion}
+                nombre_color_estandar={zapato.nombre_color_estandar}
+                nombre_color_seleccionado={color} />))
+    );
 
     function itemsObtenidos() {
         if (listItems === null || listItems.length === 0) {
@@ -150,10 +151,10 @@ function App() {
                         <h3 class="text-center display-4" id="contacto-underline">Contactanos</h3>
                     </div>
                     <ul class="list-group d-flex flex-row text-white  justify-content-evenly py-5">
-                        <li class="list-group-item border-0 rounded"><a href="https://github.com/walterbaya"><FontAwesomeIcon icon={faWhatsapp} size="2xl" bounce style={{color: "#63E6BE",}} /></a></li>
-                        <li class="list-group-item border-0 rounded"><a href="https://github.com/walterbaya"><FontAwesomeIcon icon={faTiktok} size="2xl" style={{color: "#000000"}} bounce /></a></li>
-                        <li class="list-group-item border-0 rounded"><a href="mailto:walterbaya1996@gmail.com"><FontAwesomeIcon icon={faFacebook} size="2xl" bounce style={{color: "#3b5998",}} /></a></li>
-                        <li class="list-group-item border-0 rounded"><a href="mailto:walterbaya1996@gmail.com"> <FontAwesomeIcon icon={faSquareInstagram} size="2xl" bounce style={{color: "#ff00c8",}} /> </a></li>
+                        <li class="list-group-item border-0 rounded"><a href="https://github.com/walterbaya"><FontAwesomeIcon icon={faWhatsapp} size="2xl" bounce style={{ color: "#63E6BE", }} /></a></li>
+                        <li class="list-group-item border-0 rounded"><a href="https://github.com/walterbaya"><FontAwesomeIcon icon={faTiktok} size="2xl" style={{ color: "#000000" }} bounce /></a></li>
+                        <li class="list-group-item border-0 rounded"><a href="mailto:walterbaya1996@gmail.com"><FontAwesomeIcon icon={faFacebook} size="2xl" bounce style={{ color: "#3b5998", }} /></a></li>
+                        <li class="list-group-item border-0 rounded"><a href="mailto:walterbaya1996@gmail.com"> <FontAwesomeIcon icon={faSquareInstagram} size="2xl" bounce style={{ color: "#ff00c8", }} /> </a></li>
                     </ul>
                 </div>
             </footer>
