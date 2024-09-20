@@ -270,7 +270,8 @@ input[type='radio'] {
   }
 
   .color-images {
-    height: 80px !important;
+    max-width: 83px !important;
+    height: 83px !important;
   }
 
   .carousel-image{
