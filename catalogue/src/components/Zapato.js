@@ -5,6 +5,9 @@ import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import React from "react";
+import "./Zapato.css";
+
+
 class Zapato extends React.Component {
     constructor(props) {
         super(props);
@@ -74,7 +77,7 @@ class Zapato extends React.Component {
 
     change_color = (color) => {
         this.setState({ color_actual: color });
-        this.setState({url_actual: this.loadImage(this.state.nombre, color, 'imagen1')});
+        this.setState({ url_actual: this.loadImage(this.state.nombre, color, 'imagen1') });
     }
 
     loadImage(nombre, color, imageName) {
@@ -97,171 +100,247 @@ class Zapato extends React.Component {
     }
 
 
-render_colores() {
-    const listItems = this.state.colores.map((color, index) => (
-        <picture key={color} >
-            <Image
-                onClick={() => this.change_color(color)}
-                src={this.loadImage(this.state.nombre, color, 'imagen1')}
-                alt={`Color ${color}`}
-                className={`me-2 color-images border shoe-hover rounded ${(color === this.state.color_actual) ? 'border-secondary border-1' : ''}`}
-                style={{
-                    cursor: 'pointer',
-                }}
-
-                fluid
-            />
-        </picture>
-    ));
-
-    return <div id="colores" className="d-flex flex-row justify-content-center">{listItems}</div>;
-}
-
-render_carousel_md() {
-    const items = this.state.urls_imagenes.map((imagen_url, index) => (
-        <picture key={index} className="carousel-small-image">
-            <Image
-                src={imagen_url}
-                fluid
-                onClick={() => this.change_url(imagen_url)}
-                style={{ cursor: 'pointer' }}
-            />
-        </picture>
-    ));
-
-
-    return <div className="d-none d-md-flex flex-column justify-content-evenly align-items-end py-5 col-2 col-md-0">{items}</div>;
-}
-
-render_carousel_items() {
-    return this.state.urls_imagenes.map((imagen_url, index) => (
-        <Carousel.Item key={index} className="px-3 pb-3">
-            <picture key={this.state.nombre}>
+    render_colores() {
+        const listItems = this.state.colores.map((color, index) => (
+            <picture key={color} >
                 <Image
-                    className="w-100 carousel-image"
+                    onClick={() => this.change_color(color)}
+                    src={this.loadImage(this.state.nombre, color, 'imagen1')}
+                    alt={`Color ${color}`}
+                    className={`me-2 color-images border shoe-hover rounded ${(color === this.state.color_actual) ? 'border-secondary border-1' : ''}`}
+                    style={{
+                        cursor: 'pointer',
+                    }}
+
+                    fluid
+                />
+            </picture>
+        ));
+
+        return <div id="colores" className="d-flex flex-row justify-content-center">{listItems}</div>;
+    }
+
+    render_carousel_md() {
+        const items = this.state.urls_imagenes.map((imagen_url, index) => (
+            <picture key={index} className="carousel-small-image">
+                <Image
                     src={imagen_url}
                     fluid
-                    onClick={() => this.handleImageClick(imagen_url)}
+                    onClick={() => this.change_url(imagen_url)}
                     style={{ cursor: 'pointer' }}
                 />
             </picture>
-        </Carousel.Item >
-    ));
-}
+        ));
 
 
-render_text_color() {
-    return this.capitalizeFirstLetter(
-        this.state.color_actual
-    );
-}
+        return <div className="d-none d-md-flex flex-column justify-content-evenly align-items-end py-5 col-2 col-md-0">{items}</div>;
+    }
 
-handleImageClick = (image) => {
-    this.setState({ showModal: true, selectedImage: image });
-}
-
-handleClose = () => {
-    this.setState({ showModal: false, selectedImage: "" });
-    this.change_color(this.state.nombre_color_seleccionado);
-}
-
-render() {
-    return (
-        <div className="col-xl-3 col-md-4 col-6 m-0 p-2 border-0">
-            <Card className="border-card shoe-hover">
-                <picture key={this.state.nombre} className="main-image-container d-block" >
+    render_carousel_items() {
+        return this.state.urls_imagenes.map((imagen_url, index) => (
+            <Carousel.Item key={index} className="px-3 pb-3">
+                <picture key={this.state.nombre}>
                     <Image
-                        className="main-image"
-                        src={this.loadImage(this.state.nombre, this.state.nombre_color_seleccionado, 'imagen1')}
+                        className="w-100 carousel-image"
+                        src={imagen_url}
                         fluid
-                        onClick={() => this.handleImageClick(this.state.urls_imagenes[0])}
+                        onClick={() => this.handleImageClick(imagen_url)}
                         style={{ cursor: 'pointer' }}
                     />
                 </picture>
-                <Card.Body>
-                    <Card.Text onClick={() => this.handleImageClick(this.state.urls_imagenes[0])} className="text-dark shoe-name text-decoration-none nombre_articulo">
-                        <strong>Articulo {this.capitalizeFirstLetter(this.state.nombre)}</strong> <br />
-                        <span className="shoe-color-name"> <strong>Color: </strong> {((this.state.nombre_color_seleccionado === 'estandar') ? this.state.nombre_color_estandar : this.state.nombre_color_seleccionado)} </span>
-                    </Card.Text>
+            </Carousel.Item >
+        ));
+    }
 
-                </Card.Body>
 
-            </Card>
+    render_text_color() {
+        return this.capitalizeFirstLetter(
+            this.state.color_actual
+        );
+    }
 
-            {/* Modal para mostrar la imagen a pantalla completa */}
-            <Modal show={this.state.showModal} onHide={this.handleClose} centered fullscreen={true}>
-                <Modal.Header className="d-flex justify-content-end modal-header">
-                    <button className="col-2 bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="col-8 justify-content-center text-center">
-                        <div className="navbar-brand">
-                            <h1 className="m-0 anton-regular py-2 rounded underline">Catálogo {new Date().getFullYear()}</h1>
+    handleImageClick = (image) => {
+        this.setState({ showModal: true, selectedImage: image });
+    }
+
+    handleClose = () => {
+        this.setState({ showModal: false, selectedImage: "" });
+        this.change_color(this.state.nombre_color_seleccionado);
+    }
+
+    render_colores() {
+        const listItems = this.state.colores.map((color) => (
+            <div
+                key={color}
+                className={`color-circle mx-1 ${color === this.state.color_actual ? 'selected' : ''}`}
+                onClick={() => this.change_color(color)}
+                style={{
+                    backgroundImage: `url(${this.loadImage(this.state.nombre, color, 'imagen1')})`,
+                }}
+            />
+        ));
+
+        return <div className="color-selector d-flex justify-content-center my-3">{listItems}</div>;
+    }
+
+    render_carousel_md() {
+        return (
+            <div className="thumbnail-gallery d-none d-md-flex flex-column">
+                {this.state.urls_imagenes.map((imagen_url, index) => (
+                    <div
+                        key={index}
+                        className={`thumbnail-item ${this.state.url_actual === imagen_url ? 'active' : ''}`}
+                        onClick={() => this.change_url(imagen_url)}
+                    >
+                        <img
+                            src={imagen_url}
+                            alt={`Vista ${index + 1}`}
+                            className="img-fluid"
+                        />
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    render() {
+        return (
+            <div className="col-xl-3 col-md-4 col-6 mb-4">
+                <Card className="product-card shadow-hover">
+                    <div className="card-image-container">
+                        <img
+                            src={this.loadImage(this.state.nombre, this.state.nombre_color_seleccionado, 'imagen1')}
+                            alt={this.state.nombre}
+                            className="card-image"
+                            onClick={() => this.handleImageClick(this.state.urls_imagenes[0])}
+                        />
+                        <div className="image-overlay">
+                            <div className="product-info">
+                                <h3 className="product-title">{this.capitalizeFirstLetter(this.state.nombre)}</h3>
+                                <p className="product-color">{this.state.nombre_color_seleccionado}</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-2"></div>
+                </Card>
 
-                    <Button variant="white" onClick={this.handleClose}>
-                        X
-                    </Button>
-                </Modal.Header>
-                <Modal.Body className="py-0 my-0">
-                    <div className="row d-flex align-items-start">
-                        {this.render_carousel_md()}
-                        <Carousel interval={null} controls={false} indicators={true} data-bs-theme="dark" className="d-sm-none col-12 p-3 bg-grey">
-                            {this.render_carousel_items()}
-                        </Carousel>
+                <Modal
+                    show={this.state.showModal}
+                    onHide={this.handleClose}
+                    centered
+                    size="xl"
+                    className="premium-modal"
+                    fullscreen="lg-down"
+                >
+                    <Modal.Header className="border-bottom-0 px-4 pt-4">
+                        <div className="d-flex justify-content-between align-items-center w-100">
+                            <div className="branding">
+                                <h2 className="modal-title mb-0 playfair-font">{this.capitalizeFirstLetter(this.state.nombre)}</h2>
+                                <small className="text-muted">COLECCIÓN {new Date().getFullYear()}</small>
+                            </div>
+                            <button
+                                type="button"
+                                className="btn-close-custom"
+                                onClick={this.handleClose}
+                                aria-label="Close"
+                            >
+                                &times;
+                            </button>
+                        </div>
+                    </Modal.Header>
 
-                        <picture key={this.state.nombre} className="d-none d-md-flex col-4 px-0 ">
-                            <Image
-                                className="w-100 carousel-image"
-                                src={this.state.url_actual}
-                                fluid
-                                style={{ cursor: 'pointer' }}
-                            />
-                        </picture>
+                    <Modal.Body className="px-4 pb-4 pt-0">
+                        <div className="row gx-5">
+                            {/* Galería lateral */}
+                            <div className="col-lg-2 d-none d-lg-block">
+                                <div className="sticky-gallery pe-3">
+                                    {this.state.urls_imagenes.map((url, index) => (
+                                        <div
+                                            key={index}
+                                            className={`gallery-thumbnail mb-3 position-relative ${url === this.state.url_actual ? 'active' : ''}`}
+                                            onClick={() => this.change_url(url)}
+                                        >
+                                            <img
+                                                src={url}
+                                                alt={`Vista ${index + 1}`}
+                                                className="img-fluid rounded-sm"
+                                            />
+                                            <div className="thumbnail-overlay"></div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
 
-                        <Card.Body className="d-flex flex-column col-sm-6 col-12 px-3 py-0">
-                            <Card.Title className="fw-light text-secondary border-bottom p-0 mt-3">
-                                <h2 className="p-0 m-0 klee-one-semibold big-letter text-dark py-4">Artículo {this.capitalizeFirstLetter(this.state.nombre)}</h2>
-                            </Card.Title>
+                            {/* Imagen principal - Más grande */}
+                            <div className="col-lg-7 col-md-8">
+                                <div className="main-image-container position-relative bg-light h-100">
+                                    <div className="image-magnifier h-100">
+                                        <img
+                                            src={this.state.url_actual}
+                                            alt="Vista principal"
+                                            className="main-image img-fluid w-100 h-100 object-fit-cover"
+                                        />
+                                    </div>
+                                    <div className="badge-premium">CUERO VACUNO</div>
+                                </div>
+                            </div>
 
-                            <div className="d-flex justify-content-start py-4">{this.render_colores()}</div>
-                            <ul className="list-group">
+                            {/* Detalles del producto - Más compacto */}
+                            <div className="col-lg-3 col-md-4 mt-md-0 mt-4">
+                                <div className="product-details ps-lg-4 h-100">
+                                    <div className="color-selector-section mb-4">
+                                        <h5 className="section-title mb-3">COLORES</h5>
+                                        <div className="d-flex flex-wrap gap-2">
+                                            {this.state.colores.map((color) => (
+                                                <div
+                                                    key={color}
+                                                    className="color-item position-relative"
+                                                    onClick={() => this.change_color(color)}
+                                                >
+                                                    <div
+                                                        className={`color-swatch ${color === this.state.color_actual ? 'active' : ''}`}
+                                                        style={{
+                                                            backgroundImage: `url(${this.loadImage(this.state.nombre, color, 'imagen1')})`
+                                                        }}
+                                                    >
+                                                        {color === this.state.color_actual &&
+                                                            <div className="selected-indicator"></div>
+                                                        }
+                                                    </div>
+                                                    <span className="color-name">{color}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
 
-                                <li className="list-group-item border-0 p-0 klee-one-regular">
-                                    <strong>Color:</strong> {this.render_text_color()}
-                                </li>
-
-                                <li className="list-group-item border-0 p-0 klee-one-regular">
-                                    <strong>Género:</strong> {this.state.genero}
-                                </li>
-
-
-                                <li className="list-group-item border-0 p-0 klee-one-regular">
-                                    <strong>Talles:</strong> {this.render_talles()}
-                                </li>
-
-
-                                <li className="list-group-item border-0 p-0 klee-one-regular">
-                                    <strong>Tipo:</strong> {this.state.tipo}
-                                </li>
-
-                                <li className="list-group-item border-0 p-0 klee-one-regular">
-                                    <strong>Material Interno:</strong> {this.state.material_interno}
-                                </li>
-
-                                <li className="list-group-item border-0 p-0 klee-one-regular">
-                                    <strong>Material Externo:</strong> {this.state.material_externo}
-                                </li>
-                            </ul>
-                        </Card.Body>
-                    </div>
-                </Modal.Body>
-            </Modal>
-        </div>
-    );
-}
+                                    <div className="specs-section pt-4">
+                                        <h5 className="section-title mb-3">DETALLES</h5>
+                                        <dl className="specs-grid">
+                                            <div className="spec-item">
+                                                <dt>Estilo:</dt>
+                                                <dd>{this.state.tipo}</dd>
+                                            </div>
+                                            <div className="spec-item">
+                                                <dt>Tallas:</dt>
+                                                <dd>{this.render_talles()}</dd>
+                                            </div>
+                                            <div className="spec-item">
+                                                <dt>Forro:</dt>
+                                                <dd>{this.state.material_interno}</dd>
+                                            </div>
+                                            <div className="spec-item">
+                                                <dt>Exterior:</dt>
+                                                <dd>{this.state.material_externo}</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            </div>
+        );
+    }
 }
 
 export default Zapato;
