@@ -8,14 +8,30 @@ import { Container, Row, Col, Image, Badge, Carousel, Navbar, Nav, Form } from '
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp, faInstagram, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function App() {
     const zapatos = references["zapatos"];
     const [selectedGender, setSelectedGender] = useState('ambos');
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 1500);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleGenderChange = (gender) => {
         setSelectedGender(gender);
     };
+
+    const ProductSkeleton = () => (
+        <div className="product-skeleton">
+            <div className="skeleton-image"></div>
+            <div className="skeleton-text"></div>
+            <div className="skeleton-text-short"></div>
+        </div>
+    );
 
     const filteredZapatos = zapatos.filter(zapato =>
         selectedGender === 'ambos' || zapato.genero.toLowerCase() === selectedGender
@@ -23,7 +39,7 @@ function App() {
 
     const listItems = filteredZapatos.map((zapato) => (
         zapato.colores.map((color) => (
-            <Zapato 
+            <Zapato
                 key={`${zapato.nombre}-${color}`}
                 {...zapato}
                 nombre_color_seleccionado={color}
@@ -50,15 +66,16 @@ function App() {
             {[1, 2, 3].map((num) => (
                 <Carousel.Item key={num}>
                     <div className="carousel-image-container">
-                        <Image
+                        <LazyLoadImage
                             src={require(`./assets/images/shoe${num}.jpg`)}
-                            className="carousel-image"
+                            effect="blur"
+                            height={"100%"}
                             alt={`Modelo ${num}`}
-                            fluid
                         />
+                        
                         <div className="carousel-overlay">
                             <h2 className="carousel-title">Colección {new Date().getFullYear()}</h2>
-                            <p className="carousel-subtitle">Calzado premium en cuero genuino</p>
+                            <p className="carousel-subtitle">Calzado de Cuero</p>
                         </div>
                     </div>
                 </Carousel.Item>
@@ -69,21 +86,24 @@ function App() {
     return (
         <div className="app-container">
             {/* Navbar Mejorado */}
+            
             <Navbar expand="lg" fixed="top" className="main-navbar shadow-sm">
                 <Container>
                     <Navbar.Brand className="navbar-brand">
                         <span className="brand-text">CALZADOS PALMA SHOES</span>
                         <span className="brand-year">{new Date().getFullYear()}</span>
                     </Navbar.Brand>
-                    
+
                     <Navbar.Toggle aria-controls="main-nav">
                         <FontAwesomeIcon icon={faBars} className="navbar-toggle-icon" />
                     </Navbar.Toggle>
-                    
+
                     <Navbar.Collapse id="main-nav">
                         <Nav className="filter-controls mx-auto">
                             {['ambos', 'hombre', 'mujer'].map((gender) => (
                                 <button
+                                    aria-label={`Filtrar por ${gender}`}
+                                    aria-pressed={selectedGender === gender}
                                     key={gender}
                                     className={`filter-btn ${selectedGender === gender ? 'active' : ''}`}
                                     onClick={() => handleGenderChange(gender)}
@@ -105,7 +125,9 @@ function App() {
             <main className="product-grid-section">
                 <Container>
                     <Row className="g-4 py-5">
-                        {listItems.length > 0 ? listItems : renderNoResults()}
+                        {isLoading ? (
+                            Array(8).fill().map((_, i) => <ProductSkeleton key={i} />)
+                        ) : listItems.length > 0 ? listItems : renderNoResults()}
                     </Row>
                 </Container>
             </main>

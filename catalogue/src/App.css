@@ -6,6 +6,75 @@
     flex-direction: column;
 }
 
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.product-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.03);
+    pointer-events: none;
+}
+
+@media (min-width: 1600px) {
+    .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+@keyframes skeletonPulse {
+    0% {
+        background-color: #f5f5f5;
+    }
+
+    50% {
+        background-color: #e0e0e0;
+    }
+
+    100% {
+        background-color: #f5f5f5;
+    }
+}
+
+.product-skeleton {
+    animation: skeletonPulse 1.5s infinite;
+}
+
+
 /* Navbar */
 .main-navbar {
     background: rgba(255, 255, 255, 0.95) !important;
@@ -57,24 +126,35 @@
 
 .filter-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Section */
 .hero-carousel {
-    margin-top: -80px;
+    margin-top: -10px;
+    overflow: hidden;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .carousel-image-container {
     position: relative;
-    height: 70vh;
+    height: 80vh;
     min-height: 500px;
+    max-height: 800px;
+    overflow: hidden;
 }
 
-.carousel-image {
+.carousel-image-container .lazy-load-image-loaded {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-image-container img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    filter: brightness(0.95); /* Suaviza el brillo */
 }
 
 .carousel-overlay {
@@ -84,7 +164,7 @@
     transform: translateX(-50%);
     text-align: center;
     color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-title {
@@ -158,10 +238,21 @@
     color: white;
 }
 
-.whatsapp { background: #25D366; }
-.instagram { background: #E1306C; }
-.tiktok { background: #000; }
-.facebook { background: #3b5998; }
+.whatsapp {
+    background: #25D366;
+}
+
+.instagram {
+    background: #E1306C;
+}
+
+.tiktok {
+    background: #000;
+}
+
+.facebook {
+    background: #3b5998;
+}
 
 .copyright {
     font-size: 0.9rem;
@@ -173,16 +264,16 @@
     .carousel-title {
         font-size: 2rem;
     }
-    
+
     .carousel-subtitle {
         font-size: 1rem;
     }
-    
+
     .filter-controls {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .filter-btn {
         width: 100%;
     }
