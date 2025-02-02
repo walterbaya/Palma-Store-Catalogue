@@ -3,7 +3,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import React from "react";
 import "./Zapato.css";
 
@@ -168,40 +167,6 @@ class Zapato extends React.Component {
         this.change_color(this.state.nombre_color_seleccionado);
     }
 
-    render_colores() {
-        const listItems = this.state.colores.map((color) => (
-            <div
-                key={color}
-                className={`color-circle mx-1 ${color === this.state.color_actual ? 'selected' : ''}`}
-                onClick={() => this.change_color(color)}
-                style={{
-                    backgroundImage: `url(${this.loadImage(this.state.nombre, color, 'imagen1')})`,
-                }}
-            />
-        ));
-
-        return <div className="color-selector d-flex justify-content-center my-3">{listItems}</div>;
-    }
-
-    render_carousel_md() {
-        return (
-            <div className="thumbnail-gallery d-none d-md-flex flex-column">
-                {this.state.urls_imagenes.map((imagen_url, index) => (
-                    <div
-                        key={index}
-                        className={`thumbnail-item ${this.state.url_actual === imagen_url ? 'active' : ''}`}
-                        onClick={() => this.change_url(imagen_url)}
-                    >
-                        <img
-                            src={imagen_url}
-                            alt={`Vista ${index + 1}`}
-                            className="img-fluid"
-                        />
-                    </div>
-                ))}
-            </div>
-        );
-    }
 
     render() {
         return (

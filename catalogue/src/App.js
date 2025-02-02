@@ -4,10 +4,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Zapato from './components/Zapato';
 import references from './assets/references/references.json';
 import { useState } from 'react';
-import { Container, Row, Col, Image, Badge, Carousel, Navbar, Nav, Form } from 'react-bootstrap';
+import { Container, Row, Col, Image, Carousel, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp, faInstagram, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -139,16 +139,16 @@ function App() {
                         <Col md={8} className="text-center">
                             <h3 className="footer-title mb-4">Seguinos en redes</h3>
                             <div className="social-icons d-flex justify-content-center gap-4">
-                                <a href="#" className="social-link whatsapp">
+                                <a href="/" className="social-link whatsapp">
                                     <FontAwesomeIcon icon={faWhatsapp} size="2x" />
                                 </a>
-                                <a href="#" className="social-link instagram">
+                                <a href="/" className="social-link instagram">
                                     <FontAwesomeIcon icon={faInstagram} size="2x" />
                                 </a>
-                                <a href="#" className="social-link tiktok">
+                                <a href="/" className="social-link tiktok">
                                     <FontAwesomeIcon icon={faTiktok} size="2x" />
                                 </a>
-                                <a href="#" className="social-link facebook">
+                                <a href="/" className="social-link facebook">
                                     <FontAwesomeIcon icon={faFacebook} size="2x" />
                                 </a>
                             </div>
